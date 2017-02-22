@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.route('/models')
   .get(models.getAllModels)
-  
+
 export default {
   router
 }

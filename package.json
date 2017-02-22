@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=development PORT=8000 TZ='America/Chicago' supervisor -q --ignore ./app,./test,webpack.config.js -e js node app/build/server.js",
-    "test": "NODE_ENV=test PORT=8000 TZ='America/Chicago' standard && mocha -t 10000",
+    "test": "PORT=8000 TZ='America/Chicago' NODE_ENV=test mocha app/build/test -t 10000",
     "babel:build": "babel --watch -d app/build src"
   },
   "repository": {
@@ -51,5 +51,15 @@
     "style-loader": "^0.13.1",
     "underscore-template-loader": "^0.7.3",
     "webpack": "^1.13.3"
+  },
+  "standard": {
+    "globals": [
+      "it",
+      "describe",
+      "beforeEach",
+      "afterEach",
+      "before",
+      "after"
+    ]
   }
 }
