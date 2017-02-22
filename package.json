@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=development PORT=8000 TZ='America/Chicago' supervisor -q --ignore ./app,./test,webpack.config.js -e js node app/build/server.js",
-    "test": "PORT=8000 TZ='America/Chicago' NODE_ENV=test mocha app/build/test -t 10000",
+    "test": "standard && PORT=8000 TZ='America/Chicago' NODE_ENV=test mocha app/build/test -t 10000",
     "babel:build": "babel --watch -d app/build src"
   },
   "repository": {
