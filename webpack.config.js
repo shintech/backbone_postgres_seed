@@ -1,6 +1,6 @@
 const webpack = require("webpack");
 const path = require("path");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -35,7 +35,7 @@ module.exports = {
        test: /\.js$/,
        include: paths.APP,
        exclude: [/node_modules/, paths.OUTPUT],
-       loader: 'jshint-loader'
+       loaders: ['babel-loader', 'standard-loader']
       }
     ],
     loaders: [

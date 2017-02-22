@@ -1,11 +1,10 @@
-var Marionette = require("marionette");
-var Controller = require("./controller");
+import Marionette from 'marionette'
+import Controller from './controller'
 
-var Router = Marionette.AppRouter.extend({
-  
-  initialize: function(options){
-    this.controller = new Controller({ app: options.app });
+const Router = Marionette.AppRouter.extend({
+  initialize: function (options) {
+    this.controller = new Controller({ app: options.app })
   }
-});
+})
 
-module.exports = Router;
+module.exports = Router

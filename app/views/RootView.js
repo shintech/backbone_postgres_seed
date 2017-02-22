@@ -1,22 +1,23 @@
-var NavigationView = require("./NavigationView");
+import Backbone from 'backbone'
+import NavigationView from './NavigationView'
 
-var RootView = Backbone.Marionette.View.extend({
+const RootView = Backbone.Marionette.View.extend({
   className: 'main',
-  template: require("../templates/root-view-template.html"),
+  template: require('../templates/root-view-template.html'),
   regions: {
     header: {
-      el: "#header-view"
+      el: '#header-view'
     },
     main: {
-      el: "#main-view"
+      el: '#main-view'
     }
   },
-  initialize: function(){
-    this.render();
+  initialize: function () {
+    this.render()
   },
-  onRender: function(){
-    this.showChildView('header', new NavigationView({ title: "Default" }));
+  onRender: function () {
+    this.showChildView('header', new NavigationView({ title: 'Default' }))
   }
-});
+})
 
-module.exports = RootView;
+module.exports = RootView

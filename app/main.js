@@ -1,10 +1,10 @@
-global.jQuery = require("jquery");
-require("bootstrap");
-require("./public/css/style.scss");
+global.jQuery = require('jquery')
+require('bootstrap')
+require('./public/css/style.scss')
 
-var App = require("./App");
+const App = require('./App')
 
-var app = new App();
-app.start();
+const app = new App()
+app.start()
 
-module.exports = app;
+module.exports = app

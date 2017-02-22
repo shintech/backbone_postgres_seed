@@ -1,15 +1,16 @@
-var Marionette = require("marionette");
-var RootView = require("./views/RootView");
-var Router = require("./router");
+import Backbone from 'backbone'
+import Marionette from 'marionette'
+import RootView from './views/RootView'
+import Router from './router'
 
-var App = Marionette.Application.extend({
+const App = Marionette.Application.extend({
   region: 'body',
-  onStart: function(){
-    this.view = new RootView();
-    this.showView(this.view);
-    this.Router = new Router({ app: this });
-    Backbone.history.start();
+  onStart: function () {
+    this.view = new RootView()
+    this.showView(this.view)
+    this.Router = new Router({ app: this })
+    Backbone.history.start()
   }
-});
+})
 
-module.exports = App;
+module.exports = App

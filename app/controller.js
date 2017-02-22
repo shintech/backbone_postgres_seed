@@ -1,12 +1,9 @@
-var Marionette = require("marionette");
+import Marionette from 'marionette'
 
-var Controller = Marionette.Object.extend({
-  
-  initialize: function(options){
-    
-    this.app = options.app;
-    
+const Controller = Marionette.Object.extend({
+  initialize: function (options) {
+    this.app = options.app
   }
-});
+})
 
-module.exports = Controller;
+module.exports = Controller
