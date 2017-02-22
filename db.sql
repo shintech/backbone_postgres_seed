@@ -3,36 +3,23 @@ CREATE DATABASE api_development;
 
 \c api_development;
 
-CREATE TABLE users (
+CREATE TABLE models (
   ID SERIAL PRIMARY KEY,
-    first_name VARCHAR,
-    last_name VARCHAR,
-    title VARCHAR,
-    username VARCHAR,
-    password VARCHAR,
-    phone VARCHAR,
-    email VARCHAR,
-    admin BOOLEAN DEFAULT false
+    name VARCHAR
 );
 
 
-INSERT INTO users ( first_name, last_name, title, username, password, phone, email )
-VALUES ('Kill', 'Bill', 'management', 'killbill', 'password', '5555555555', 'killbill@kill.bill');
+INSERT INTO models ( name )
+VALUES ( 'test' );
 
 DROP DATABASE IF EXISTS api_test;
 CREATE DATABASE api_test;
 
 \c api_test;
 
-CREATE TABLE users (
+CREATE TABLE models (
   ID SERIAL PRIMARY KEY,
-    first_name VARCHAR,
-    last_name VARCHAR,
-    title VARCHAR,
-    username VARCHAR,
-    password VARCHAR,
-    phone VARCHAR,
-    email VARCHAR
+    name VARCHAR
 );
 
 DROP DATABASE IF EXISTS api_production;
@@ -40,13 +27,7 @@ CREATE DATABASE api_production;
 
 \c api_production;
 
-CREATE TABLE users (
+CREATE TABLE models (
   ID SERIAL PRIMARY KEY,
-    first_name VARCHAR,
-    last_name VARCHAR,
-    title VARCHAR,
-    username VARCHAR,
-    password VARCHAR,
-    phone VARCHAR,
-    email VARCHAR
+    name VARCHAR
 );

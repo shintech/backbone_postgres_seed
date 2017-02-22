@@ -1,3 +1,2 @@
-webpack
-bower install
-mkdir build
+mkdir app/build
+mkdir app/static

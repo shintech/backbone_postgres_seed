@@ -1,7 +1,11 @@
 import express from 'express'
+import {models} from './db'
 
 const router = express.Router()
 
-// Routes
-
-module.exports = router
+router.route('/models')
+  .get(models.getAllModels)
+  
+export default {
+  router
+}

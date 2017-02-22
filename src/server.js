@@ -2,9 +2,12 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import {join} from 'path'
 import morgan from 'morgan'
+import routes from './routes'
+
+const {router} = routes
 
 const environment = process.env.NODE_ENV || 'development'
-const routes = require('./routes')
+
 const port = process.env.PORT || 8000
 
 const app = express()
@@ -18,7 +21,7 @@ app.use(bodyParser.json())
 
 app.use(express.static(join(__dirname, '..', 'static')))
 
-app.use('/api', routes)
+app.use('/api', router)
 
 const server = app.listen(port, function () {
   if (environment === 'development') {
