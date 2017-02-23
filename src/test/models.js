@@ -1,12 +1,10 @@
 import chai from 'chai'
 import chaiHttp from 'chai-http'
-import initServer from '../server'
-import {init} from '../db'
+import server from '../server'
+import {init as db} from '../db'
 
 chai.use(chaiHttp)
 
-const {server} = initServer
-const {db} = init
 const expect = chai.expect
 const request = chai.request(server)
 

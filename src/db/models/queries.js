@@ -1,6 +1,4 @@
-import init from '../init'
-
-const {db} = init
+import {init as db} from '../'
 
 function getAllModels (req, res, next) {
   db.any('select * from models')

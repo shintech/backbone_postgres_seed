@@ -11,6 +11,4 @@ config.redisStore = {
   secret: process.env.REDIS_STORE_SECRET
 }
 
-export default {
-  config
-}
+export default config
