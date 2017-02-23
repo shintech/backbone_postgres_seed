@@ -6,7 +6,8 @@
   "scripts": {
     "start": "NODE_ENV=development PORT=8000 TZ='America/Chicago' supervisor -q --ignore ./app,./test,webpack.config.js -e js node app/build/server.js",
     "test": "standard && PORT=8000 TZ='America/Chicago' NODE_ENV=test mocha app/build/test -t 10000",
-    "babel:build": "babel --watch -d app/build src"
+    "babel:build": "babel -d app/build src",
+    "babel:watch": "babel --watch -d app/build src"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,8 @@
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
     "express": "^4.14.0",
+    "express-favicon": "^2.0.0",
+    "finalhandler": "^1.0.0",
     "jquery": "^3.1.1",
     "pg": "^6.1.0",
     "pg-promise": "^5.4.7",
