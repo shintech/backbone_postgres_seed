@@ -5,5 +5,6 @@ const router = express.Router()
 
 router.route('/models')
   .get(models.getAllModels)
+  .post(models.createModel)
 
 export default router
