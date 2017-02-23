@@ -31,4 +31,6 @@ const server = app.listen(port, function () {
   }
 })
 
-module.exports = server
+export default {
+  server
+}

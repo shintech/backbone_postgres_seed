@@ -1,10 +1,11 @@
 import chai from 'chai'
 import chaiHttp from 'chai-http'
-import server from '../server'
+import initServer from '../server'
 import {init} from '../db'
 
 chai.use(chaiHttp)
 
+const {server} = initServer
 const {db} = init
 const expect = chai.expect
 const request = chai.request(server)
@@ -35,4 +36,3 @@ describe('Models', function () {
     })
   })
 })
-

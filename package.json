@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development PORT=8000 TZ='America/Chicago' supervisor -q --watch app/build -e js node app/build/server.js",
-    "test": "standard && PORT=8000 TZ='America/Chicago' NODE_ENV=test mocha app/build/test -t 10000",
-    "babel:build": "babel -d app/build src",
-    "babel:watch": "babel --watch -d app/build src"
+    "start": "NODE_ENV=development PORT=8000 TZ='America/Chicago' supervisor -q --watch build --ignore build/static -e js node build/server.js",
+    "test": "standard && PORT=8000 TZ='America/Chicago' NODE_ENV=test mocha build/test -t 10000",
+    "babel:build": "babel -d build src",
+    "babel:watch": "babel --watch -d build src"
   },
   "repository": {
     "type": "git",

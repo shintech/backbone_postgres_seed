@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
-mkdir app/build
-mkdir app/static
-cp -rv resources app/build
+rm -rv node_modules build # remove directories
+
+mkdir build
+mkdir build/static
+cp -rv resources build
 npm cache clear
 npm install
-npm rebuild node-sass
+npm rebuild node-sass #error with node-sass
 bower install
 webpack
 npm run babel:build

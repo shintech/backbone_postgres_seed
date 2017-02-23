@@ -1,6 +1,8 @@
 import promise from 'bluebird'
-import config from '../_config'
+import initConfig from '../_config'
 import pg from 'pg-promise'
+
+const {config} = initConfig
 
 const options = {
   promiseLib: promise
