@@ -2,4 +2,4 @@
 
 mkdir app/build
 mkdir app/static
-cp -rv resource app/build
+cp -rv resources app/build
