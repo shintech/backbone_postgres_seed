@@ -3,7 +3,7 @@ import bodyParser from 'body-parser'
 import {join} from 'path'
 import morgan from 'morgan'
 import routes from './routes'
-import favicon from 'express-favicon'
+import favicon from 'serve-favicon'
 
 const {router} = routes
 
@@ -17,11 +17,11 @@ if (environment === 'development') {
   app.use(morgan('dev'))
 }
 
-app.use(favicon(join(__dirname, 'resources', 'favicon.png')))
+app.use(favicon(join(__dirname, 'resources', 'images', 'favicon.png')))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-app.use(express.static(join(__dirname, '..', 'static')))
+app.use(express.static(join(__dirname, 'static')))
 
 app.use('/api', router)
 

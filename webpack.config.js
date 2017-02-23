@@ -12,7 +12,7 @@ var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 var paths = {
   ENTRY: path.join(__dirname, 'app', 'main.js'),
   OUTPUT_FILENAME: 'bundle.js',
-  OUTPUT: path.join(__dirname, 'app', 'static'),
+  OUTPUT: path.join(__dirname, 'app', 'build', 'static'),
   APP: path.join(__dirname, 'app')
 }
 
@@ -34,7 +34,7 @@ module.exports = {
       {
         test: /\.js$/,
         include: paths.APP,
-        exclude: [/node_modules/, paths.OUTPUT],
+        exclude: [/node_modules/, path.join(__dirname, 'app', 'build'), paths.OUTPUT],
         loaders: ['babel-loader', 'standard-loader']
       }
     ],

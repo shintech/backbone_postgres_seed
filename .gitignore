@@ -1,5 +1,4 @@
 /node_modules
 /bower_components
-/app/static
-/app/build
+/app/build/
 /npm-debug.log
