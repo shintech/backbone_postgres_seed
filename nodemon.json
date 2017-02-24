@@ -1,0 +1,9 @@
+{
+  "verbose": true,
+  "watch": ["build"],
+  "ignore": ["build/static"],
+  "ext": "js,json",
+  "events": {
+    "exit": "npm test"
+  }
+}
