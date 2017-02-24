@@ -11,7 +11,12 @@ const request = chai.request(server)
 describe('Clear days ...', function (done) {
   beforeEach(function (done) {
     db.none('TRUNCATE models RESTART IDENTITY')
-    done()
+    .then(function () {
+      done()
+    })
+    .catch(function (err) {
+      return done(err)
+    })
   })
 
   it('should not see data', function (done) {
@@ -19,6 +24,9 @@ describe('Clear days ...', function (done) {
     .then(function (data) {
       expect(data).to.deep.equal([])
       done()
+    })
+    .catch(function (err) {
+      return done(err)
     })
   })
 })

@@ -6,6 +6,9 @@ function getAllModels (req, res, next) {
     res.status(200)
     .json(data)
   })
+  .catch(function (err) {
+    return next(err)
+  })
 }
 
 function createModel (req, res, next) {
