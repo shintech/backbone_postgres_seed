@@ -46,7 +46,7 @@
     "jshint-loader": "^0.8.3",
     "mocha": "^3.2.0",
     "morgan": "^1.7.0",
-    "node-sass": "^3.13.0",
+    "node-sass": "^4.5.0",
     "sass-loader": "^4.0.2",
     "standard": "^8.6.0",
     "standard-loader": "^5.0.0",
@@ -63,5 +63,8 @@
       "before",
       "after"
     ]
-  }
+  },
+  "engines": {
+    "node": ">=6"
+  }  
 }
