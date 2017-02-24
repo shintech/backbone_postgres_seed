@@ -13,4 +13,4 @@ const App = Marionette.Application.extend({
   }
 })
 
-module.exports = App
+export default App

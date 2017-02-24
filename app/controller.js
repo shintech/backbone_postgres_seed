@@ -6,4 +6,4 @@ const Controller = Marionette.Object.extend({
   }
 })
 
-module.exports = Controller
+export default Controller

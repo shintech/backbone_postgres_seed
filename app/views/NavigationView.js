@@ -14,4 +14,4 @@ const NavigationView = Backbone.Marionette.View.extend({
   }
 })
 
-module.exports = NavigationView
+export default NavigationView

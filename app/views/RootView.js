@@ -20,4 +20,4 @@ const RootView = Backbone.Marionette.View.extend({
   }
 })
 
-module.exports = RootView
+export default RootView

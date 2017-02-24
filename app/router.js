@@ -7,4 +7,4 @@ const Router = Marionette.AppRouter.extend({
   }
 })
 
-module.exports = Router
+export default Router
