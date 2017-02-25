@@ -4,7 +4,6 @@ describe('Models', function () {
   crudTest({
     model: 'models',
     url: '/api/models/',
-    properties: ['name', 'attribute'],
     postAttributes: {
       name: 'name',
       attribute: 1

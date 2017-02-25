@@ -11,9 +11,9 @@ const request = chai.request(server)
 function crudTest (props) {
   const model = props.model
   const url = props.url
-  const properties = props.properties
   const postAttributes = props.postAttributes
   const putAttributes = props.putAttributes
+  const properties = Object.keys(postAttributes)
 
   clearModels(model)
   checkData(model)
