@@ -17,30 +17,25 @@ var paths = {
 }
 
 module.exports = {
-  debug: true,
   entry: [
     paths.ENTRY
   ],
-  devServer: {
-    contentBase: './app'
-  },
   resolve: {
     alias: {
       'marionette': 'backbone.marionette'
     }
   },
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.js$/,
+        enforce: 'pre',
         include: paths.APP,
         exclude: [/node_modules/, path.join(__dirname, 'build'), paths.OUTPUT],
         loaders: ['babel-loader', 'standard-loader']
-      }
-    ],
-    loaders: [
+      },
       { test: /\.html/, include: path.join(paths.APP, 'templates'), loader: 'underscore-template-loader' },
-      { test: /\.scss$/, include: path.join(paths.APP, 'public'), loader: ExtractTextPlugin.extract('style', 'css!sass') }
+      { test: /\.scss$/, include: path.join(paths.APP, 'public'), loader: ExtractTextPlugin.extract('css-loader!sass-loader') }
     ]
   },
   output: {
