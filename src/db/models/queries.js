@@ -25,7 +25,20 @@ function createModel (req, res, next) {
   })
 }
 
+function getSingleModel (req, res, next) {
+  const modelID = parseInt(req.params.id)
+  db.one('select * from models where id = $1', modelID)
+  .then(function (data) {
+    res.status(200)
+    .json(data)
+  })
+  .catch(function (err) {
+    return next(err)
+  })
+}
+
 export default {
   getAllModels,
-  createModel
+  createModel,
+  getSingleModel
 }
