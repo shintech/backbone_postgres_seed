@@ -1,15 +1,26 @@
 #!/usr/bin/env bash
 
-if [ -d "node_modules" ] || [ -d "build" ]; then # check if node modules or build exists and remove
-  echo "node_modules exists, removing..."
+if [ -d "node_modules" ] || [ -d "build" ]; then
+  echo "Removing existing files..."
   rm -rv node_modules build --force
 fi
 
+echo "Creating file directories..." && \
 mkdir build && \
 mkdir build/static && \
+
+echo "Copying resources..." && \
 cp -rv resources build && \
+
+printf "\nInstalling packages...\n" && \
 yarn install && \
-bower install && \
-webpack && \
-npm run babel:build && \
-npm test
+
+printf "\nBuilding in progress...\nPlease wait...\n\n" && \
+webpack --progress && \
+printf "\n " && \
+npm run -s babel:build && \
+
+printf "\nRunning preliminary tests...\n" && \
+npm -s test && \
+
+printf "All done...\n"

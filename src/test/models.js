@@ -8,7 +8,7 @@ chai.use(chaiHttp)
 const expect = chai.expect
 const request = chai.request(server)
 
-describe('Clear days ...', function (done) {
+describe('Clear models...', function (done) {
   beforeEach(function (done) {
     db.none('TRUNCATE models RESTART IDENTITY')
     .then(function () {
