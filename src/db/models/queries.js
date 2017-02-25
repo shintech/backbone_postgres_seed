@@ -37,8 +37,40 @@ function getSingleModel (req, res, next) {
   })
 }
 
+function updateSingleModel (req, res, next) {
+  const modelID = parseInt(req.params.id)
+  db.none('update models set name=$1 where id=$2', [req.body.name, modelID])
+  .then(function (done) {
+    res.status(200)
+    .json({
+      status: 'success',
+      message: 'Updated one model...'
+    })
+  })
+  .catch(function (err) {
+    return next(err)
+  })
+}
+
+function removeModel (req, res, next) {
+  var modelID = parseInt(req.params.id)
+  db.result('delete from models where id = $1', modelID)
+  .then(function (data) {
+    res.status(200)
+    .json({
+      status: 'success',
+      message: `Removed ${data.rowCount} model`
+    })
+  })
+  .catch(function (err) {
+    return next(err)
+  })
+}
+
 export default {
   getAllModels,
   createModel,
-  getSingleModel
+  getSingleModel,
+  updateSingleModel,
+  removeModel
 }

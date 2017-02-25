@@ -75,10 +75,48 @@ function getSingleTest (model, propertys) {
       .end(function (err, res) {
         expect(err).to.be.null
         expect(res).to.have.status(200)
-        for (var i; i < propertys.length; i++) {
+        for (var i = 0; i < propertys.length; i++) {
           expect(res.body).to.have.property(propertys[i])
           expect(res.body + propertys[i]).to.equal(response.body[0] + propertys[i])
         }
+        done()
+      })
+    })
+  })
+}
+
+function updateTest (model, object) {
+  const name = model.slice(0, model.length - 1)
+  it('should update a single ' + name + ' at /api/' + model + ' PUT', function (done) {
+    request
+    .get('/api/' + model)
+    .end(function (error, response) {
+      expect(error).to.be.null
+      request
+      .put('/api/' + model + '/' + response.body[0].id)
+      .send(object)
+      .end(function (err, res) {
+        expect(err).to.be.null
+        expect(res).to.have.status(200)
+        expect(res.body).to.have.status('success')
+        done()
+      })
+    })
+  })
+}
+
+function removeTest (model) {
+  const name = model.slice(0, model.length - 1)
+  it('should remove a single ' + name + ' at /api/' + model + ' DELETE', function (done) {
+    request
+    .get('/api/' + model)
+    .end(function (error, response) {
+      expect(error).to.be.null
+      request
+      .delete('/api/' + model + '/' + response.body[0].id)
+      .end(function (err, res) {
+        expect(err).to.be.null
+        expect(res).to.have.status(200)
         done()
       })
     })
@@ -90,5 +128,7 @@ export default {
   checkData,
   postTest,
   getAllTest,
-  getSingleTest
+  getSingleTest,
+  updateTest,
+  removeTest
 }

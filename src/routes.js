@@ -9,5 +9,7 @@ router.route('/models')
 
 router.route('/models/:id')
   .get(models.getSingleModel)
+  .put(models.updateSingleModel)
+  .delete(models.removeModel)
 
 export default router
