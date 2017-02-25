@@ -1,13 +1,13 @@
 {
   "name": "backbone_postgres_seed",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "",
   "main": "build/server.js",
   "scripts": {
     "start": "NODE_ENV=development PORT=8000 TZ='America/Chicago' nodemon build/server.js",
-    "test": "PORT=38002 TZ='America/Chicago' NODE_ENV=test mocha build/test -t 10000",
+    "test": "standard && PORT=8001 TZ='America/Chicago' NODE_ENV=test mocha build/test -t 10000",
     "babel:build": "babel -d build src",
-    "babel:watch": "babel --watch -d build src"
+    "babel:watch": "babel --watch -d build src | ts '[%Y-%m-%d %H:%M:%S]'"
   },
   "repository": "git+https://github.com/shintech/backbone_postgres_seed.git",
   "author": "Michael Prather",

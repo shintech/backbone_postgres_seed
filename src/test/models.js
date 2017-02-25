@@ -1,5 +1,15 @@
-import runTests from './main'
+import runTests from './runner'
 
 describe('Models', function () {
-  runTests('models', ['id', 'name'], {name: 'name'}, {name: 'updatedName'})
+  runTests({
+    model: 'models',
+    url: '/api/models/',
+    properties: ['id', 'name'],
+    postAttributes: {
+      name: 'name'
+    },
+    putAttributes: {
+      name: 'name'
+    }
+  })
 })

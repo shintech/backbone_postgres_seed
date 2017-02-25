@@ -8,14 +8,20 @@ chai.use(chaiHttp)
 const expect = chai.expect
 const request = chai.request(server)
 
-function runTests (model, properties, postAttributes, putAttributes) {
+function runTests (props) {
+  const model = props.model
+  const url = props.url
+  const properties = props.properties
+  const postAttributes = props.postAttributes
+  const putAttributes = props.putAttributes
+
   clearModels(model)
   checkData(model)
-  postTest(model, postAttributes)
-  getAllTest(model, properties)
-  updateTest(model, putAttributes)
-  getSingleTest(model, properties)
-  removeTest(model)
+  postTest(model, url, postAttributes)
+  getAllTest(model, url, properties)
+  updateTest(model, url, putAttributes)
+  getSingleTest(model, url, properties)
+  removeTest(model, url)
 }
 
 function clearModels (model) {
@@ -43,11 +49,11 @@ function checkData (model) {
   })
 }
 
-function postTest (model, object) {
+function postTest (model, url, object) {
   const name = model.slice(0, model.length - 1)
-  it('should create a ' + name + ' at /api/' + model + ' POST', function (done) {
+  it('should create a ' + name + ' at ' + url + ' POST', function (done) {
     request
-    .post('/api/' + model)
+    .post(url)
     .send(object)
     .end(function (err, res) {
       expect(err).to.be.null
@@ -58,14 +64,14 @@ function postTest (model, object) {
   })
 }
 
-function getAllTest (model, properties) {
-  it('should get all ' + model + ' at /api/' + model + ' GET', function (done) {
+function getAllTest (model, url, properties) {
+  it('should get all ' + model + ' at ' + url + ' GET', function (done) {
     request
-    .get('/api/' + model)
+    .get(url)
     .end(function (err, res) {
       expect(err).to.be.null
       expect(res).to.have.status(200)
-      for (var i; i < properties.length; i++) {
+      for (var i = 0; i < properties.length; i++) {
         expect(res.body[0]).to.have.property(properties[i])
       }
       done()
@@ -73,15 +79,15 @@ function getAllTest (model, properties) {
   })
 }
 
-function getSingleTest (model, properties) {
+function getSingleTest (model, url, properties) {
   const name = model.slice(0, model.length - 1)
-  it('should get a single ' + name + ' at /api/' + model + ' GET', function (done) {
+  it('should get a single ' + name + ' at ' + url + ' GET', function (done) {
     request
-    .get('/api/' + model)
+    .get(url)
     .end(function (error, response) {
       expect(error).to.be.null
       request
-      .get('/api/' + model + '/' + response.body[0].id)
+      .get(url + response.body[0].id)
       .end(function (err, res) {
         expect(err).to.be.null
         expect(res).to.have.status(200)
@@ -95,15 +101,15 @@ function getSingleTest (model, properties) {
   })
 }
 
-function updateTest (model, object) {
+function updateTest (model, url, object) {
   const name = model.slice(0, model.length - 1)
-  it('should update a single ' + name + ' at /api/' + model + ' PUT', function (done) {
+  it('should update a single ' + name + ' at ' + url + ' PUT', function (done) {
     request
-    .get('/api/' + model)
+    .get(url)
     .end(function (error, response) {
       expect(error).to.be.null
       request
-      .put('/api/' + model + '/' + response.body[0].id)
+      .put(url + response.body[0].id)
       .send(object)
       .end(function (err, res) {
         expect(err).to.be.null
@@ -115,15 +121,15 @@ function updateTest (model, object) {
   })
 }
 
-function removeTest (model) {
+function removeTest (model, url) {
   const name = model.slice(0, model.length - 1)
-  it('should remove a single ' + name + ' at /api/' + model + ' DELETE', function (done) {
+  it('should remove a single ' + name + ' at ' + url + ' DELETE', function (done) {
     request
-    .get('/api/' + model)
+    .get(url)
     .end(function (error, response) {
       expect(error).to.be.null
       request
-      .delete('/api/' + model + '/' + response.body[0].id)
+      .delete(url + response.body[0].id)
       .end(function (err, res) {
         expect(err).to.be.null
         expect(res).to.have.status(200)
