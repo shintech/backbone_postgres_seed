@@ -8,6 +8,16 @@ chai.use(chaiHttp)
 const expect = chai.expect
 const request = chai.request(server)
 
+function runTests (model, properties, postAttributes, putAttributes) {
+  clearModels(model)
+  checkData(model)
+  postTest(model, postAttributes)
+  getAllTest(model, properties)
+  updateTest(model, putAttributes)
+  getSingleTest(model, properties)
+  removeTest(model)
+}
+
 function clearModels (model) {
   it('should clear data', function (done) {
     db.none('TRUNCATE ' + model + ' RESTART IDENTITY')
@@ -48,22 +58,22 @@ function postTest (model, object) {
   })
 }
 
-function getAllTest (model, propertys) {
+function getAllTest (model, properties) {
   it('should get all ' + model + ' at /api/' + model + ' GET', function (done) {
     request
     .get('/api/' + model)
     .end(function (err, res) {
       expect(err).to.be.null
       expect(res).to.have.status(200)
-      for (var i; i < propertys.length; i++) {
-        expect(res.body[0]).to.have.property(propertys[i])
+      for (var i; i < properties.length; i++) {
+        expect(res.body[0]).to.have.property(properties[i])
       }
       done()
     })
   })
 }
 
-function getSingleTest (model, propertys) {
+function getSingleTest (model, properties) {
   const name = model.slice(0, model.length - 1)
   it('should get a single ' + name + ' at /api/' + model + ' GET', function (done) {
     request
@@ -75,9 +85,9 @@ function getSingleTest (model, propertys) {
       .end(function (err, res) {
         expect(err).to.be.null
         expect(res).to.have.status(200)
-        for (var i = 0; i < propertys.length; i++) {
-          expect(res.body).to.have.property(propertys[i])
-          expect(res.body + propertys[i]).to.equal(response.body[0] + propertys[i])
+        for (var i = 0; i < properties.length; i++) {
+          expect(res.body).to.have.property(properties[i])
+          expect(res.body + properties[i]).to.equal(response.body[0] + properties[i])
         }
         done()
       })
@@ -123,12 +133,4 @@ function removeTest (model) {
   })
 }
 
-export default {
-  clearModels,
-  checkData,
-  postTest,
-  getAllTest,
-  getSingleTest,
-  updateTest,
-  removeTest
-}
+export default runTests
