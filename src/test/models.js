@@ -1,15 +1,17 @@
-import runTests from './runner'
+import crudTest from './runner'
 
 describe('Models', function () {
-  runTests({
+  crudTest({
     model: 'models',
     url: '/api/models/',
-    properties: ['id', 'name'],
+    properties: ['name', 'attribute'],
     postAttributes: {
-      name: 'name'
+      name: 'name',
+      attribute: 1
     },
     putAttributes: {
-      name: 'name'
+      name: 'updatedName',
+      attribute: 2
     }
   })
 })

@@ -5,7 +5,8 @@ CREATE DATABASE api_development;
 
 CREATE TABLE models (
   ID SERIAL PRIMARY KEY,
-    name VARCHAR
+    name VARCHAR,
+    attribute INTEGER
 );
 
 
@@ -19,7 +20,8 @@ CREATE DATABASE api_test;
 
 CREATE TABLE models (
   ID SERIAL PRIMARY KEY,
-    name VARCHAR
+    name VARCHAR,
+    attribute INTEGER
 );
 
 DROP DATABASE IF EXISTS api_production;
@@ -29,5 +31,6 @@ CREATE DATABASE api_production;
 
 CREATE TABLE models (
   ID SERIAL PRIMARY KEY,
-    name VARCHAR
+    name VARCHAR,
+    attribute INTEGER
 );

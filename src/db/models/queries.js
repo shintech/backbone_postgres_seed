@@ -12,7 +12,7 @@ function getAllModels (req, res, next) {
 }
 
 function createModel (req, res, next) {
-  db.none('insert into models( name )' + 'values( ${name} )', req.body) // eslint-disable-line
+  db.none('insert into models( name, attribute )' + 'values( ${name}, ${attribute} )', req.body) // eslint-disable-line
   .then(function () {
     res.status(200)
     .json({
@@ -39,7 +39,7 @@ function getSingleModel (req, res, next) {
 
 function updateSingleModel (req, res, next) {
   const modelID = parseInt(req.params.id)
-  db.none('update models set name=$1 where id=$2', [req.body.name, modelID])
+  db.none('update models set name=$1, attribute=$2 where id=$3', [req.body.name, req.body.attribute, modelID])
   .then(function (done) {
     res.status(200)
     .json({

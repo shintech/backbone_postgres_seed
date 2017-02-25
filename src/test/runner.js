@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import chai from 'chai'
 import chaiHttp from 'chai-http'
 import server from '../server'
@@ -8,7 +9,7 @@ chai.use(chaiHttp)
 const expect = chai.expect
 const request = chai.request(server)
 
-function runTests (props) {
+function crudTest (props) {
   const model = props.model
   const url = props.url
   const properties = props.properties
@@ -18,10 +19,10 @@ function runTests (props) {
   clearModels(model)
   checkData(model)
   postTest(model, url, postAttributes)
-  getAllTest(model, url, properties)
-  updateTest(model, url, putAttributes)
-  getSingleTest(model, url, properties)
-  removeTest(model, url)
+  getAllTest(model, url, properties, postAttributes)
+  putTest(model, url, putAttributes)
+  getSingleTest(model, url, properties, putAttributes)
+  deleteTest(model, url)
 }
 
 function clearModels (model) {
@@ -58,50 +59,32 @@ function postTest (model, url, object) {
     .end(function (err, res) {
       expect(err).to.be.null
       expect(res).to.have.status(200)
+      expect(res).to.be.json
       expect(res.body).to.have.status('success')
       done()
     })
   })
 }
 
-function getAllTest (model, url, properties) {
+function getAllTest (model, url, properties, object) {
   it('should get all ' + model + ' at ' + url + ' GET', function (done) {
     request
     .get(url)
     .end(function (err, res) {
       expect(err).to.be.null
       expect(res).to.have.status(200)
+      expect(res).to.be.json
+      expect(res.body[0]).to.have.property('id')
       for (var i = 0; i < properties.length; i++) {
         expect(res.body[0]).to.have.property(properties[i])
+        expect(res.body[0][properties[i]]).to.equal(object[properties[i]])
       }
       done()
     })
   })
 }
 
-function getSingleTest (model, url, properties) {
-  const name = model.slice(0, model.length - 1)
-  it('should get a single ' + name + ' at ' + url + ' GET', function (done) {
-    request
-    .get(url)
-    .end(function (error, response) {
-      expect(error).to.be.null
-      request
-      .get(url + response.body[0].id)
-      .end(function (err, res) {
-        expect(err).to.be.null
-        expect(res).to.have.status(200)
-        for (var i = 0; i < properties.length; i++) {
-          expect(res.body).to.have.property(properties[i])
-          expect(res.body + properties[i]).to.equal(response.body[0] + properties[i])
-        }
-        done()
-      })
-    })
-  })
-}
-
-function updateTest (model, url, object) {
+function putTest (model, url, object) {
   const name = model.slice(0, model.length - 1)
   it('should update a single ' + name + ' at ' + url + ' PUT', function (done) {
     request
@@ -114,6 +97,7 @@ function updateTest (model, url, object) {
       .end(function (err, res) {
         expect(err).to.be.null
         expect(res).to.have.status(200)
+        expect(res).to.be.json
         expect(res.body).to.have.status('success')
         done()
       })
@@ -121,7 +105,31 @@ function updateTest (model, url, object) {
   })
 }
 
-function removeTest (model, url) {
+function getSingleTest (model, url, properties, object) {
+  const name = model.slice(0, model.length - 1)
+  it('should get a single ' + name + ' at ' + url + ' GET', function (done) {
+    request
+    .get(url)
+    .end(function (error, response) {
+      expect(error).to.be.null
+      request
+      .get(url + response.body[0].id)
+      .end(function (err, res) {
+        expect(err).to.be.null
+        expect(res).to.have.status(200)
+        expect(res).to.be.json
+        expect(res.body).to.have.property('id')
+        for (var i = 0; i < properties.length; i++) {
+          expect(res.body).to.have.property(properties[i])
+          expect(res.body[properties[i]]).to.equal(object[properties[i]])
+        }
+        done()
+      })
+    })
+  })
+}
+
+function deleteTest (model, url) {
   const name = model.slice(0, model.length - 1)
   it('should remove a single ' + name + ' at ' + url + ' DELETE', function (done) {
     request
@@ -133,10 +141,11 @@ function removeTest (model, url) {
       .end(function (err, res) {
         expect(err).to.be.null
         expect(res).to.have.status(200)
+        expect(res).to.be.json
         done()
       })
     })
   })
 }
 
-export default runTests
+export default crudTest

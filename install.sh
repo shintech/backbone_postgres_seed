@@ -16,7 +16,7 @@ printf "\nInstalling packages...\n" && \
 yarn install && \
 
 printf "\nBuilding in progress...\nPlease wait...\n\n" && \
-webpack --progress && \
+webpack --progress --display-reasons --display-modules --display-chunks && \
 printf "\n " && \
 npm run -s babel:build && \
 
