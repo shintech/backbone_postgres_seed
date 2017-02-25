@@ -8,12 +8,7 @@ fi
 mkdir build && \
 mkdir build/static && \
 cp -rv resources build && \
-npm install && \
-
-# echo "workaround for node-sass error" && \
-# npm cache clear && \
-# npm rebuild node-sass && \
-
+yarn install && \
 bower install && \
 webpack && \
 npm run babel:build && \
