@@ -1,4 +1,4 @@
-import crudTest from './runner'
+import {crudTest} from './'
 
 describe('Models', function () {
   crudTest({

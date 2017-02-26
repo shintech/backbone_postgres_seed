@@ -2,14 +2,14 @@ const webpack = require('webpack')
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: path.join(__dirname, 'app', 'index.html'),
   filename: 'index.html',
   inject: 'body'
 })
 
-var paths = {
+const paths = {
   ENTRY: path.join(__dirname, 'app', 'main.js'),
   OUTPUT_FILENAME: 'bundle.js',
   OUTPUT: path.join(__dirname, 'build', 'static'),
@@ -53,8 +53,6 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new ExtractTextPlugin('bundle.css')
-    // new webpack.optimize.DedupePlugin(),
-    // new webpack.optimize.OccurenceOrderPlugin(),
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: { warnings: false },
     //   mangle: true,

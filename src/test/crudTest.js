@@ -9,12 +9,8 @@ const expect = chai.expect
 const request = chai.request(server)
 
 function crudTest (props) {
-  const model = props.model
-  const url = props.url
-  const postAttributes = props.postAttributes
-  const putAttributes = props.putAttributes
+  const { model, url, postAttributes, putAttributes, extProperties } = props
   const properties = Object.keys(postAttributes)
-  const extProperties = props.extProperties
 
   clearModels(model)
   checkData(model)
