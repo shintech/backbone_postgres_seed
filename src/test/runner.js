@@ -14,13 +14,14 @@ function crudTest (props) {
   const postAttributes = props.postAttributes
   const putAttributes = props.putAttributes
   const properties = Object.keys(postAttributes)
+  const extProperties = props.extProperties
 
   clearModels(model)
   checkData(model)
   postTest(model, url, postAttributes)
-  getAllTest(model, url, properties, postAttributes)
+  getAllTest(model, url, properties, postAttributes, extProperties)
   putTest(model, url, putAttributes)
-  getSingleTest(model, url, properties, putAttributes)
+  getSingleTest(model, url, properties, putAttributes, extProperties)
   deleteTest(model, url)
 }
 
@@ -65,7 +66,7 @@ function postTest (model, url, object) {
   })
 }
 
-function getAllTest (model, url, properties, object) {
+function getAllTest (model, url, properties, object, extProperties) {
   it('should get all ' + model + ' at ' + url + ' GET', function (done) {
     request
     .get(url)
@@ -74,10 +75,18 @@ function getAllTest (model, url, properties, object) {
       expect(res).to.have.status(200)
       expect(res).to.be.json
       expect(res.body[0]).to.have.property('id')
+
       for (var i = 0; i < properties.length; i++) {
         expect(res.body[0]).to.have.property(properties[i])
         expect(res.body[0][properties[i]]).to.equal(object[properties[i]])
       }
+
+      if (extProperties) {
+        for (var t = 0; t < extProperties.length; t++) {
+          expect(res.body[0]).to.have.property(extProperties[t])
+        }
+      }
+
       done()
     })
   })
@@ -104,7 +113,7 @@ function putTest (model, url, object) {
   })
 }
 
-function getSingleTest (model, url, properties, object) {
+function getSingleTest (model, url, properties, object, extProperties) {
   const name = model.slice(0, model.length - 1)
   it('should get a single ' + name + ' at ' + url + ' GET', function (done) {
     request
@@ -118,10 +127,18 @@ function getSingleTest (model, url, properties, object) {
         expect(res).to.have.status(200)
         expect(res).to.be.json
         expect(res.body).to.have.property('id')
+
         for (var i = 0; i < properties.length; i++) {
           expect(res.body).to.have.property(properties[i])
           expect(res.body[properties[i]]).to.equal(object[properties[i]])
         }
+
+        if (extProperties) {
+          for (var t = 0; t < extProperties.length; t++) {
+            expect(res.body).to.have.property(extProperties[t])
+          }
+        }
+
         done()
       })
     })

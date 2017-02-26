@@ -11,6 +11,7 @@ describe('Models', function () {
     putAttributes: {
       name: 'updatedName',
       attribute: 2
-    }
+    },
+    extProperties: ['current_day']
   })
 })
