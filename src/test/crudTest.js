@@ -12,37 +12,55 @@ function crudTest (props) {
   const { model, url, postAttributes, putAttributes, extProperties } = props
   const properties = Object.keys(postAttributes)
 
-  clearModels(model)
-  checkData(model)
+  before(function (done) {
+    clearModels(model, done)
+  })
+
+  beforeEach(function (done) {
+    createModel(model, url, postAttributes, done)
+  })
+
+  afterEach(function (done) {
+    clearModels(model, done)
+  })
+
   postTest(model, url, postAttributes)
   getAllTest(model, url, properties, postAttributes, extProperties)
   putTest(model, url, putAttributes)
-  getSingleTest(model, url, properties, putAttributes, extProperties)
+  getSingleTest(model, url, properties, postAttributes, extProperties)
   deleteTest(model, url)
 }
 
-function clearModels (model) {
-  it('should clear data', function (done) {
-    db.none('TRUNCATE ' + model + ' RESTART IDENTITY')
-    .then(function () {
-      done()
-    })
-    .catch(function (err) {
-      return done(err)
-    })
+function clearModels (model, done) {
+  db.none('TRUNCATE ' + model + ' RESTART IDENTITY')
+  .then(function () {
+    done()
+  })
+  .catch(function (err) {
+    return done(err)
   })
 }
 
-function checkData (model) {
-  it('should not see data', function (done) {
-    db.any('select * from ' + model)
-    .then(function (data) {
-      expect(data).to.deep.equal([])
-      done()
-    })
-    .catch(function (err) {
-      return done(err)
-    })
+// function checkData (model) {
+//   it('should not see data', function (done) {
+//     db.any('select * from ' + model)
+//     .then(function (data) {
+//       expect(data).to.deep.equal([])
+//       done()
+//     })
+//     .catch(function (err) {
+//       return done(err)
+//     })
+//   })
+// }
+
+function createModel (model, url, object, done) {
+  chai.request(server)
+  .post(url)
+  .send(object)
+  .end(function (err, data) {
+    if (err) console.log(err)
+    done()
   })
 }
 
