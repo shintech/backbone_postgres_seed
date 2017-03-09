@@ -1,6 +1,7 @@
 import chai from 'chai'
 import chaiHttp from 'chai-http'
 import server from '../server'
+import chalk from 'chalk'
 import {init as db} from '../db'
 
 chai.use(chaiHttp)
@@ -17,6 +18,7 @@ function crudTest (props) {
   })
 
   beforeEach(function (done) {
+    checkData(model)
     createModel(model, url, postAttributes, done)
   })
 
@@ -41,18 +43,14 @@ function clearModels (model, done) {
   })
 }
 
-// function checkData (model) {
-//   it('should not see data', function (done) {
-//     db.any('select * from ' + model)
-//     .then(function (data) {
-//       expect(data).to.deep.equal([])
-//       done()
-//     })
-//     .catch(function (err) {
-//       return done(err)
-//     })
-//   })
-// }
+function checkData (model) {
+  db.any('select * from ' + model)
+  .then(function (data) {
+    if (data.length > 0) {
+      console.log(chalk.bgRed.white('Error: Data is not being cleared...'))
+    }
+  })
+}
 
 function createModel (model, url, object, done) {
   chai.request(server)
