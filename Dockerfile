@@ -7,7 +7,7 @@ WORKDIR /shintech
 COPY . .
 
 RUN echo "Starting..." && \
-  yarn global add webpack && \
+  npm install -g webpack && \
   rm -rv node_modules build --force && \
   printf "Creating file directories...\n" && \
   mkdir build && \
@@ -21,6 +21,6 @@ RUN printf "Installing dependencies...\n" &&\
 
   printf "Building in progress...\nPlease wait...\n" && \
   webpack && \
-  npm run babel:build && \
+  npm run build && \
   printf "Starting..." && \
   npm start
