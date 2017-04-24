@@ -24,9 +24,3 @@ RUN printf "Installing dependencies...\n" &&\
   npm run babel:build && \
   printf "Starting..." && \
   npm start
-
-
-# # COPY resources build
-# RUN ls -l build && \
-#   printf "shintech" && \
-#   ls /shintech
