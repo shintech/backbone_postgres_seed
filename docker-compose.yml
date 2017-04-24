@@ -3,7 +3,7 @@ version: '2'
 services: 
   bbps:
     build: .
-    image: github.com/shintech/backbone_postgres_seed:1.2.3
+    image: shintech/backbone_postgres_seed:1.2.3
     container_name: bbps
     env_file:
       - ./bbps.env
