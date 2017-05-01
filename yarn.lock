@@ -735,9 +735,9 @@ babylon@^6.11.0, babylon@^6.15.0:
   version "6.16.1"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.16.1.tgz#30c5a22f481978a9e7f8cdfdf496b11d94b404d3"
 
-backbone.marionette@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/backbone.marionette/-/backbone.marionette-3.2.0.tgz#c98d146984344ec6453103ac7fa1987059e38de1"
+backbone.marionette@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/backbone.marionette/-/backbone.marionette-3.3.0.tgz#9fdba3dfc0d53641c691d65f2997a73c736f9eb4"
   dependencies:
     backbone.radio "^2.0.0"
 
@@ -2891,7 +2891,7 @@ lodash.uniq@^4.3.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.3, lodash@^4.2.0, lodash@^4.3.0:
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -4761,7 +4761,7 @@ underscore-template-loader@^0.7.3:
     fastparse "^1.1.1"
     loader-utils "^0.2.11"
 
-underscore@>=1.8.3, underscore@^1.8.3:
+underscore@>=1.8.3:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
 

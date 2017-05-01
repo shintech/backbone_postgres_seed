@@ -22,7 +22,8 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      'marionette': 'backbone.marionette'
+      'marionette': 'backbone.marionette',
+      'underscore': 'lodash'
     }
   },
   module: {
@@ -47,7 +48,7 @@ module.exports = {
     HtmlWebpackPluginConfig,
     new webpack.ProvidePlugin({
       $: 'jquery',
-      _: 'underscore'
+      _: 'lodash'
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
