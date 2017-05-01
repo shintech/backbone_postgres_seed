@@ -60,7 +60,6 @@ function checkData (model) {
   .then(function (data) {
     if (data.length > 0) {
       runTest = false
-      return
     }
   })
 }
