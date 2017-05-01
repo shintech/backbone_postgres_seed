@@ -21,6 +21,6 @@ RUN printf "Installing dependencies...\n" &&\
 
   printf "Building in progress...\nPlease wait...\n" && \
   webpack && \
-  npm run build && \
-  printf "Starting..." && \
-  npm start
+  npm run build 
+
+CMD npm start
