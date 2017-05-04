@@ -24,7 +24,7 @@ const router = getRouter(options)
 const { app, environment, port, logger, packageName } = options
 const server = Server(app)
 
-if (environment === 'development') {
+if (environment !== 'test') {
   app.use(morgan('dev'))
 }
 
