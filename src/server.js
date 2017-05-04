@@ -39,7 +39,6 @@ app.use(express.static(path.join(__dirname, 'static')))
 
 server.listen(port, () => {
   if (environment !== 'test') {
-    logger.info('Environment:', environment)
     logger.info(`${chalk.bgBlack.cyan(packageName)} listening on port ${port}...`)
   }
 })
