@@ -14,6 +14,9 @@ const FormView = Backbone.Marionette.View.extend({
 
   initialize: function () {
     this.model = new Model()
+    Backbone.Validation.bind(this, {
+      model: this.model
+    })
   },
 
   handleSubmit: function (e) {
@@ -24,16 +27,22 @@ const FormView = Backbone.Marionette.View.extend({
       attribute: $('#attribute_input').val()
     }
 
-    this.model.save(modelAttrs, {
-      success: function () {
-        submitMessage('Successfully created...')
-      },
-      error: function () {
-        submitMessage('Submission error...')
-        $('.message-block').addClass('has-error')
-      }
-    })
-    this.collection.add(this.model)
+    this.model.set(modelAttrs)
+
+    if (this.model.isValid(true)) {
+      this.model.save(modelAttrs, {
+        success: function () {
+          submitMessage('Successfully created...')
+        },
+        error: function () {
+          submitMessage('Submission error...')
+          $('.message-block').addClass('has-error')
+        }
+      })
+      this.collection.add(this.model)
+
+      Backbone.Validation.unbind(this)
+    }
   }
 })
 
