@@ -10,7 +10,20 @@ Backbone + Postgres + Express + Node 6
     
 ### Usage 
 
-    npm start
+#### Development
+    
+    npm run watch
+    webpack --watch
+    npm run dev
+    
+#### Production
+
+##### /shintech/bbps_deploy
+    
+    git clone https://github.com/shintech/bbps_deploy
+    cd bbps_deploy
+    docker-compose pull
+    docker-compose up -d
     
 ### Notes 
 
@@ -30,10 +43,10 @@ Backbone + Postgres + Express + Node 6
     curl http://127.0.0.1:8000/api/models/:id
     
     #POST models
-    curl -H "Content-Type: application/json" -X POST -d '{"name":"killbill"}' http://127.0.0.1:8000/api/models
+    curl -H "Content-Type: application/json" -X POST -d '{ "name":"killbill", "attribute":1 }' http://127.0.0.1:8000/api/models
     
     #PUT models
-    curl -H "Content-Type: application/json" -X PUT -d '{"name":"Kill Bill"}' http://127.0.0.1:8000/api/models/2
+    curl -H "Content-Type: application/json" -X PUT -d '{ "name":"Kill Bill" }' http://127.0.0.1:8000/api/models/2
     
     #DELETE models
     curl -X DELETE http://127.0.0.1:8000/api/models/1
