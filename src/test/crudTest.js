@@ -11,7 +11,7 @@ const request = chai.request(server)
 let runTest = true
 
 function crudTest (props) {
-  const { model, url, postAttributes, putAttributes, extProperties } = props
+  const { model, url, postUrl, postAttributes, putAttributes, extProperties } = props
   const properties = Object.keys(postAttributes)
 
   before(function (done) {
@@ -27,7 +27,7 @@ function crudTest (props) {
     if (!runTest) {
       throw new Error('Tests did not run...')
     }
-    createModel(model, url, postAttributes, done)
+    createModel(model, postUrl, postAttributes, done)
   })
 
   afterEach(function (done) {
@@ -38,11 +38,11 @@ function crudTest (props) {
     }
   })
 
-  postTest(model, url, postAttributes)
+  postTest(model, postUrl, postAttributes)
   getAllTest(model, url, properties, postAttributes, extProperties)
-  putTest(model, url, putAttributes)
-  getSingleTest(model, url, properties, postAttributes, extProperties)
-  deleteTest(model, url)
+  putTest(model, url, postUrl, putAttributes)
+  getSingleTest(model, url, postUrl, properties, postAttributes, extProperties)
+  deleteTest(model, url, postUrl)
 }
 
 function clearModels (model, done) {
@@ -98,16 +98,16 @@ function getAllTest (model, url, properties, object, extProperties) {
       expect(err).to.be.null
       expect(res).to.have.status(200)
       expect(res).to.be.json
-      expect(res.body[0]).to.have.property('id')
+      expect(res.body.models[0]).to.have.property('id')
 
       for (var i = 0; i < properties.length; i++) {
-        expect(res.body[0]).to.have.property(properties[i])
-        expect(res.body[0][properties[i]]).to.equal(object[properties[i]])
+        expect(res.body.models[0]).to.have.property(properties[i])
+        expect(res.body.models[0][properties[i]]).to.equal(object[properties[i]])
       }
 
       if (extProperties) {
         for (var t = 0; t < extProperties.length; t++) {
-          expect(res.body[0]).to.have.property(extProperties[t])
+          expect(res.body.models[0]).to.have.property(extProperties[t])
         }
       }
 
@@ -116,15 +116,15 @@ function getAllTest (model, url, properties, object, extProperties) {
   })
 }
 
-function putTest (model, url, object) {
+function putTest (model, url, postUrl, object) {
   const name = model.slice(0, model.length - 1)
-  it('should update a single ' + name + ' at ' + url + ' PUT', function (done) {
+  it('should update a single ' + name + ' at ' + postUrl + ' PUT', function (done) {
     request
     .get(url)
     .end(function (error, response) {
       expect(error).to.be.null
       request
-      .put(url + response.body[0].id)
+      .put(postUrl + response.body.models[0].id)
       .send(object)
       .end(function (err, res) {
         expect(err).to.be.null
@@ -137,7 +137,7 @@ function putTest (model, url, object) {
   })
 }
 
-function getSingleTest (model, url, properties, object, extProperties) {
+function getSingleTest (model, url, postUrl, properties, object, extProperties) {
   const name = model.slice(0, model.length - 1)
   it('should get a single ' + name + ' at ' + url + ' GET', function (done) {
     request
@@ -145,7 +145,7 @@ function getSingleTest (model, url, properties, object, extProperties) {
     .end(function (error, response) {
       expect(error).to.be.null
       request
-      .get(url + response.body[0].id)
+      .get(postUrl + response.body.models[0].id)
       .end(function (err, res) {
         expect(err).to.be.null
         expect(res).to.have.status(200)
@@ -169,7 +169,7 @@ function getSingleTest (model, url, properties, object, extProperties) {
   })
 }
 
-function deleteTest (model, url) {
+function deleteTest (model, url, postUrl) {
   const name = model.slice(0, model.length - 1)
   it('should remove a single ' + name + ' at ' + url + ' DELETE', function (done) {
     request
@@ -177,7 +177,7 @@ function deleteTest (model, url) {
     .end(function (error, response) {
       expect(error).to.be.null
       request
-      .delete(url + response.body[0].id)
+      .delete(postUrl + response.body.models[0].id)
       .end(function (err, res) {
         expect(err).to.be.null
         expect(res).to.have.status(200)

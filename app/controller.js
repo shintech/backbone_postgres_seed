@@ -1,25 +1,27 @@
 import Marionette from 'marionette'
 import Models from './collections/Models'
-import ModelsView from './views/ModelsView'
+import TableView from './views/TableView'
 import FormView from './views/FormView'
 
 const Controller = Marionette.Object.extend({
   initialize: function (options) {
     this.app = options.app
-
-    this.models = new Models()
   },
 
-  index: function () {
+  page: function (id) {
     const app = this.app
 
-    const modelsView = new ModelsView({
-      collection: this.models
-    })
+    const models = new Models({ id: id })
 
-    this.models.fetch({
-      success: function () {
-        app.view.showChildView('main', modelsView)
+    this.models = models
+
+    models.fetch({
+      success: function (data) {
+        app.view.showChildView('main', new TableView({
+          collection: models,
+          pageData: data.pageData,
+          panelHeading: 'Panel Heading'
+        }))
       },
 
       error: function (err) {

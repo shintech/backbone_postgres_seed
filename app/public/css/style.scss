@@ -5,3 +5,21 @@
 .has-error {
   color: red;
 }
+
+
+table {
+  border: 1px solid lightgrey;
+}
+
+.table-header {
+  background-color: rgb(231, 231, 230);
+  text-align: center;
+}
+
+th, td {
+  text-align: center;
+}
+
+#main {
+  display: none;
+}

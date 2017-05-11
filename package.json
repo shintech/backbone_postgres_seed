@@ -1,12 +1,12 @@
 {
   "name": "backbone_postgres_seed",
-  "version": "1.7.1",
+  "version": "1.8.0",
   "description": "",
   "main": "build/server.js",
   "scripts": {
     "start": "node build/server.js",
     "dev": "NODE_ENV=development PORT=8000 TZ='America/Chicago' nodemon build/server.js",
-    "test": "standard && PORT=8001 TZ='America/Chicago' NODE_ENV=test mocha build/test -t 10000",
+    "test": "PORT=8001 TZ='America/Chicago' NODE_ENV=test mocha build/test -t 10000",
     "build": "babel -d build src",
     "watch": "babel --watch -d build src | ts '[%Y-%m-%d %H:%M:%S]'"
   },
@@ -29,6 +29,8 @@
     "express": "^4.14.1",
     "jquery": "^3.1.1",
     "lodash": "^4.17.4",
+    "pagurbate": "^0.3.1",
+    "pagurbation": "^0.1.2",
     "pg": "^6.1.2",
     "pg-promise": "^5.5.8",
     "serve-favicon": "^2.4.0",

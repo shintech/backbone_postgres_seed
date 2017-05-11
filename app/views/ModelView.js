@@ -1,5 +1,6 @@
 const ModelView = Backbone.Marionette.View.extend({
-  tagName: 'li',
+  tagName: 'tr',
+  className: 'table-row',
   template: require('../templates/model-view-template.html')
 })
 

@@ -7,11 +7,29 @@ CREATE TABLE models (
   ID SERIAL PRIMARY KEY,
   name VARCHAR,
   attribute INTEGER,
-  current_day TIMESTAMP without time zone default (now() at time zone 'utc')
+  created_at TIMESTAMP without time zone default (now() at time zone 'utc')
 );
 
 INSERT INTO models ( name, attribute )
-VALUES ( 'test', 1 );
+VALUES ( 'test1', 1 );
+INSERT INTO models ( name, attribute )
+VALUES ( 'test2', 2 );
+INSERT INTO models ( name, attribute )
+VALUES ( 'test3', 3 );
+INSERT INTO models ( name, attribute )
+VALUES ( 'test4', 4 );
+INSERT INTO models ( name, attribute )
+VALUES ( 'test5', 5 );
+INSERT INTO models ( name, attribute )
+VALUES ( 'test6', 6 );
+INSERT INTO models ( name, attribute )
+VALUES ( 'test7', 7 );
+INSERT INTO models ( name, attribute )
+VALUES ( 'test8', 8 );
+INSERT INTO models ( name, attribute )
+VALUES ( 'test9', 9 );
+INSERT INTO models ( name, attribute )
+VALUES ( 'test10', 10 );
 
 ---------------------------------------------------------------------------
 
@@ -24,5 +42,5 @@ CREATE TABLE models (
   ID SERIAL PRIMARY KEY,
   name VARCHAR,
   attribute INTEGER,
-  current_day TIMESTAMP without time zone default (now() at time zone 'utc')
+  created_at TIMESTAMP without time zone default (now() at time zone 'utc')
 );
