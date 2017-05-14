@@ -4459,6 +4459,10 @@ ripemd160@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-1.0.1.tgz#93a4bbd4942bc574b69a8fa57c71de10ecca7d6e"
 
+root_view@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/root_view/-/root_view-0.0.3.tgz#5fb81f6ddfdf4648b70c86c3476881e12cf8b673"
+
 run-async@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-0.1.0.tgz#c8ad4a5e110661e402a7d21b530e009f25f8e389"
