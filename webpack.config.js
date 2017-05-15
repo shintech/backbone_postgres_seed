@@ -33,10 +33,16 @@ module.exports = {
         enforce: 'pre',
         include: paths.APP,
         exclude: [/node_modules/, path.join(__dirname, 'build'), paths.OUTPUT],
-        loaders: ['babel-loader', 'standard-loader']
+        use: ['babel-loader', 'standard-loader']
       },
       { test: /\.html/, include: path.join(paths.APP, 'templates'), loader: 'underscore-template-loader' },
-      { test: /\.scss$/, include: path.join(paths.APP, 'public'), loader: ExtractTextPlugin.extract('css-loader!sass-loader') }
+      { test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [ 'css-loader', 'sass-loader'],
+          publicPath: path.join(paths.APP, 'public')
+        })
+      }
     ]
   },
   output: {
@@ -50,16 +56,22 @@ module.exports = {
       $: 'jquery',
       _: 'lodash'
     }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
-    new ExtractTextPlugin('bundle.css')
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compress: { warnings: false },
-    //   mangle: true,
-    //   sourcemap: false,
-    //   beautify: false,
-    //   dead_code: true
-    // })
+    new ExtractTextPlugin('bundle.css'),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false,
+      options: {
+        babel: {
+          babelrc: true
+        }
+      }
+    }),    
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false },
+      mangle: true,
+      sourcemap: false,
+      beautify: false,
+      dead_code: true
+    })
   ]
 }
