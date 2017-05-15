@@ -1,4 +1,5 @@
-import App from './App'
+import App from 'backbone_app'
+import Router from './router'
 
 global.jQuery = require('jquery')
 require('bootstrap')
@@ -23,7 +24,11 @@ _.extend(Backbone.Validation.callbacks, {
   }
 })
 
-const app = new App()
+const app = new App({ title: 'Default' })
+const router = new Router({ app: app })
+
+app.Router = router
+
 app.start()
 
 export default app
