@@ -74,6 +74,8 @@ function createModel (model, url, object, done) {
   })
 }
 
+/*eslint-disable */
+
 function postTest (model, url, object) {
   const name = model.slice(0, model.length - 1)
   it('should create a ' + name + ' at ' + url + ' POST', function (done) {
@@ -81,7 +83,7 @@ function postTest (model, url, object) {
     .post(url)
     .send(object)
     .end(function (err, res) {
-      expect(err).to.be.null
+      expect(err).to.be.null 
       expect(res).to.have.status(200)
       expect(res).to.be.json
       expect(res.body).to.have.status('success')

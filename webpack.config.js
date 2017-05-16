@@ -39,7 +39,7 @@ module.exports = {
       { test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [ 'css-loader', 'sass-loader'],
+          use: ['css-loader', 'sass-loader'],
           publicPath: path.join(paths.APP, 'public')
         })
       }
@@ -65,7 +65,7 @@ module.exports = {
           babelrc: true
         }
       }
-    }),    
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false },
       mangle: true,
