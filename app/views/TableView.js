@@ -38,14 +38,14 @@ const TableView = Backbone.Marionette.View.extend({
     this.showChildView('body', new ModelsView({ collection: this.collection }))
     this.showChildView('footer', new Pagurbate({ pageData: this.pageData }))
   },
-  
+
   handleClick: function (e) {
     console.log('clicked')
     const id = $(e.currentTarget).data('id')
     const model = this.collection.get(id)
-    const modelModalView = new ModelModalView({ model: model })
+    const modelModalView = new ModelModalView({ model: model }) // eslint-disable-line
   },
-  
+
   mouseoverHeader: function (event) {
     $(event.currentTarget).css({'background-color': 'lightgrey', 'cursor': 'pointer'})
   },
