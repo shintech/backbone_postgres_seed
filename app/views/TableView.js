@@ -1,4 +1,5 @@
 import ModelsView from './ModelsView'
+import ModelModalView from './ModelModalView'
 import Pagurbate from 'pagurbate'
 
 const TableView = Backbone.Marionette.View.extend({
@@ -18,7 +19,8 @@ const TableView = Backbone.Marionette.View.extend({
     'mouseover .table-header': 'mouseoverHeader',
     'mouseout .table-header': 'mouseoutHeader',
     'mouseover .table-row': 'mouseoverRow',
-    'mouseout .table-row': 'mouseoutRow'
+    'mouseout .table-row': 'mouseoutRow',
+    'click .table-row': 'handleClick'
   },
 
   initialize: function (options) {
@@ -36,7 +38,14 @@ const TableView = Backbone.Marionette.View.extend({
     this.showChildView('body', new ModelsView({ collection: this.collection }))
     this.showChildView('footer', new Pagurbate({ pageData: this.pageData }))
   },
-
+  
+  handleClick: function (e) {
+    console.log('clicked')
+    const id = $(e.currentTarget).data('id')
+    const model = this.collection.get(id)
+    const modelModalView = new ModelModalView({ model: model })
+  },
+  
   mouseoverHeader: function (event) {
     $(event.currentTarget).css({'background-color': 'lightgrey', 'cursor': 'pointer'})
   },

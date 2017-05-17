@@ -4,6 +4,13 @@ const ModelView = Backbone.Marionette.View.extend({
   tagName: 'tr',
   className: 'table-row',
   template: require('../templates/model-view-template.html'),
+  attributes: function () {
+    return {
+      'data-id': this.model.get('id'),
+      'data-toggle': 'modal',
+      'data-target': '#modelModal'
+    }
+  },
   serializeData: function () {
     const createdAt = moment(this.model.get('created_at'))
 
