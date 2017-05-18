@@ -1,6 +1,6 @@
 import Marionette from 'marionette'
 import Models from './collections/Models'
-import TableView from './views/TableView'
+import TableView from 'backbone_table_view'
 import FormView from './views/FormView'
 
 const Controller = Marionette.Object.extend({
@@ -20,7 +20,10 @@ const Controller = Marionette.Object.extend({
         app.view.showChildView('main', new TableView({
           collection: models,
           pageData: data.pageData,
-          panelHeading: 'Panel Heading'
+          panelHeading: 'Panel Heading',
+          template: require('./templates/table-view-template.html'),
+          tableItemTemplate: require('./templates/model-view-template.html'),
+          modalViewTemplate: require('./templates/model-modal-view-template.html')
         }))
       },
 
