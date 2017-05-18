@@ -768,6 +768,12 @@ backbone_app@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/backbone_app/-/backbone_app-0.0.3.tgz#8c581d9320efa15bd688415f7d0c4944a0c5d8a6"
 
+backbone_modal_view@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/backbone_modal_view/-/backbone_modal_view-0.0.2.tgz#d0339e12c8ee933aec0d7f6e52c24b964c1e0246"
+  dependencies:
+    standard "^10.0.2"
+
 balanced-match@^0.4.1, balanced-match@^0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-0.4.2.tgz#cb3f3e3c732dc0f01ee70b403f302e61d7709838"

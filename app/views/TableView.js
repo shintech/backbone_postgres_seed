@@ -1,5 +1,5 @@
 import ModelsView from './ModelsView'
-import ModelModalView from './ModelModalView'
+import ModelModalView from 'backbone_modal_view'
 import Pagurbate from 'pagurbate'
 
 const TableView = Backbone.Marionette.View.extend({
@@ -40,10 +40,9 @@ const TableView = Backbone.Marionette.View.extend({
   },
 
   handleClick: function (e) {
-    console.log('clicked')
     const id = $(e.currentTarget).data('id')
     const model = this.collection.get(id)
-    const modelModalView = new ModelModalView({ model: model }) // eslint-disable-line
+    const modelModalView = new ModelModalView({ model: model, template: require('../templates/model-modal-view-template.html')  }) // eslint-disable-line
   },
 
   mouseoverHeader: function (event) {
