@@ -13,7 +13,7 @@ let runTest = true
 function crudTest (props) {
   const { model, url, postUrl, postAttributes, putAttributes, extProperties, expectedResponse } = props
   const properties = Object.keys(postAttributes)
-  
+
   before(function (done) {
     clearModels(model, done)
     checkData(model)
