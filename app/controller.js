@@ -14,10 +14,10 @@ const Controller = Marionette.Object.extend({
     console.log('index')
   },
 
-  page: function (id) {
+  page: function (page) {
     const app = this.app
 
-    const models = new Models({ id: id })
+    const models = new Models([], { page: page })
 
     this.models = models
 
