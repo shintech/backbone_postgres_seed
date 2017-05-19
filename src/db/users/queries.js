@@ -26,7 +26,7 @@ function getSingleUser (req, res, next, options) {
 
 function createUser (req, res, next, options) {
   const encryptedPassword = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10), null)
-  
+
   db.none('insert into users( username, password )' + 'values( $1, $2 )', [req.body.username, encryptedPassword]) // eslint-disable-line
   .then(function () {
     res.status(200)
@@ -42,7 +42,7 @@ function createUser (req, res, next, options) {
 
 function updateUser (req, res, next, options) {
   const encryptedPassword = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10), null)
-  
+
   db.none('update users set password=$1 where id=$2', [encryptedPassword, parseInt(req.params.id)])
     .then(function () {
       res.status(200)
