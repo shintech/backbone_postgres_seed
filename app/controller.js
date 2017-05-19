@@ -4,7 +4,6 @@ import Models from './collections/Models'
 import TableView from 'backbone_table_view'
 import FormView from 'backbone_form_view'
 
-
 const Controller = Marionette.Object.extend({
   initialize: function (options) {
     this.app = options.app
@@ -36,11 +35,11 @@ const Controller = Marionette.Object.extend({
   },
 
   formRoute: function () {
-    const formView = new FormView({ 
+    const formView = new FormView({
       formTemplate: require('./templates/form-view-template.html'),
-      model: new Model(),
+      model: new Model()
     })
-    
+
     this.app.view.showChildView('main', formView)
   }
 })
