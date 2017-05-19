@@ -3,10 +3,15 @@ import Model from './models/Model'
 import Models from './collections/Models'
 import TableView from 'backbone_table_view'
 import FormView from 'backbone_form_view'
+import LoginView from './views/LoginView'
 
 const Controller = Marionette.Object.extend({
   initialize: function (options) {
     this.app = options.app
+  },
+
+  index: function () {
+    console.log('index')
   },
 
   page: function (id) {
@@ -41,6 +46,10 @@ const Controller = Marionette.Object.extend({
     })
 
     this.app.view.showChildView('main', formView)
+  },
+
+  loginRoute: function () {
+    this.app.view.showChildView('main', new LoginView())
   }
 })
 

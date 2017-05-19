@@ -11,9 +11,9 @@ const request = chai.request(server)
 let runTest = true
 
 function crudTest (props) {
-  const { model, url, postUrl, postAttributes, putAttributes, extProperties } = props
+  const { model, url, postUrl, postAttributes, putAttributes, extProperties, expectedResponse } = props
   const properties = Object.keys(postAttributes)
-
+  
   before(function (done) {
     clearModels(model, done)
     checkData(model)
@@ -39,10 +39,10 @@ function crudTest (props) {
   })
 
   postTest(model, postUrl, postAttributes)
-  getAllTest(model, url, properties, postAttributes, extProperties)
-  putTest(model, url, postUrl, putAttributes)
-  getSingleTest(model, url, postUrl, properties, postAttributes, extProperties)
-  deleteTest(model, url, postUrl)
+  getAllTest(model, url, properties, postAttributes, extProperties, expectedResponse)
+  putTest(model, url, postUrl, putAttributes, expectedResponse)
+  getSingleTest(model, url, postUrl, properties, postAttributes, extProperties, expectedResponse)
+  deleteTest(model, url, postUrl, expectedResponse)
 }
 
 function clearModels (model, done) {
@@ -92,24 +92,30 @@ function postTest (model, url, object) {
   })
 }
 
-function getAllTest (model, url, properties, object, extProperties) {
+function getAllTest (model, url, properties, object, extProperties, expectedResponse) {
   it('should get all ' + model + ' at ' + url + ' GET', function (done) {
     request
     .get(url)
     .end(function (err, res) {
+      let resp
+      if (expectedResponse) {
+        resp = res.body[expectedResponse]
+      } else {
+        resp = res.body
+      }
       expect(err).to.be.null
       expect(res).to.have.status(200)
       expect(res).to.be.json
-      expect(res.body.models[0]).to.have.property('id')
+      expect(resp[0]).to.have.property('id')
 
       for (var i = 0; i < properties.length; i++) {
-        expect(res.body.models[0]).to.have.property(properties[i])
-        expect(res.body.models[0][properties[i]]).to.equal(object[properties[i]])
+        expect(resp[0]).to.have.property(properties[i])
+        expect(resp[0][properties[i]]).to.equal(object[properties[i]])
       }
 
       if (extProperties) {
         for (var t = 0; t < extProperties.length; t++) {
-          expect(res.body.models[0]).to.have.property(extProperties[t])
+          expect(resp[0]).to.have.property(extProperties[t])
         }
       }
 
@@ -118,15 +124,21 @@ function getAllTest (model, url, properties, object, extProperties) {
   })
 }
 
-function putTest (model, url, postUrl, object) {
+function putTest (model, url, postUrl, object, expectedResponse) {
   const name = model.slice(0, model.length - 1)
   it('should update a single ' + name + ' at ' + postUrl + ' PUT', function (done) {
     request
     .get(url)
     .end(function (error, response) {
+      let resp
+      if (expectedResponse) {
+        resp = response.body[expectedResponse]
+      } else {
+        resp = response.body
+      }        
       expect(error).to.be.null
       request
-      .put(postUrl + response.body.models[0].id)
+      .put(postUrl + resp[0].id)
       .send(object)
       .end(function (err, res) {
         expect(err).to.be.null
@@ -139,15 +151,21 @@ function putTest (model, url, postUrl, object) {
   })
 }
 
-function getSingleTest (model, url, postUrl, properties, object, extProperties) {
+function getSingleTest (model, url, postUrl, properties, object, extProperties, expectedResponse) {
   const name = model.slice(0, model.length - 1)
   it('should get a single ' + name + ' at ' + url + ' GET', function (done) {
     request
     .get(url)
     .end(function (error, response) {
+      let resp
+      if (expectedResponse) {
+        resp = response.body[expectedResponse]
+      } else {
+        resp = response.body
+      }        
       expect(error).to.be.null
       request
-      .get(postUrl + response.body.models[0].id)
+      .get(postUrl + resp[0].id)
       .end(function (err, res) {
         expect(err).to.be.null
         expect(res).to.have.status(200)
@@ -171,15 +189,21 @@ function getSingleTest (model, url, postUrl, properties, object, extProperties) 
   })
 }
 
-function deleteTest (model, url, postUrl) {
+function deleteTest (model, url, postUrl, expectedResponse) {
   const name = model.slice(0, model.length - 1)
   it('should remove a single ' + name + ' at ' + url + ' DELETE', function (done) {
     request
     .get(url)
     .end(function (error, response) {
+      let resp
+      if (expectedResponse) {
+        resp = response.body[expectedResponse]
+      } else {
+        resp = response.body
+      }        
       expect(error).to.be.null
       request
-      .delete(postUrl + response.body.models[0].id)
+      .delete(postUrl + resp[0].id)
       .end(function (err, res) {
         expect(err).to.be.null
         expect(res).to.have.status(200)

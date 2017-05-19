@@ -13,6 +13,7 @@ describe('Models', function () {
       name: 'updatedName',
       attribute: 2
     },
+    expectedResponse: 'models',
     extProperties: ['created_at']
   })
 })
