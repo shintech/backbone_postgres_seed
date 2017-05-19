@@ -1,4 +1,5 @@
 import passport from 'passport'
+import bcrypt from 'bcryptjs'
 import {init as db} from '../db'
 import authenticationMiddleware from './middleware'
 
@@ -24,7 +25,7 @@ function initPassport () {
       db.one('select * from users where username = $1', username)
       .then(function (user) {
         if (!user) { return done(null, false) }
-        if (password !== user.password) {
+        if (!bcrypt.compareSync(password, user.password)) {
           return done(null, false)
         }
         return done(null, user)
