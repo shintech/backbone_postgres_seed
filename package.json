@@ -1,6 +1,6 @@
 {
   "name": "backbone_postgres_seed",
-  "version": "1.9.6",
+  "version": "1.9.7",
   "description": "",
   "main": "build/server.js",
   "scripts": {
@@ -37,7 +37,7 @@
     "jquery": "^3.1.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
-    "pagurbate": "^0.4.1",
+    "pagurbate": "^0.5.0",
     "pagurbation": "^0.1.4",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
