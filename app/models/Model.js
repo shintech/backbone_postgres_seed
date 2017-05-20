@@ -1,8 +1,10 @@
 import validation from 'backbone-validation' // eslint-disable-line
+import path from 'path'
 import moment from 'moment'
+import config from '../_config'
 
 const Model = Backbone.Model.extend({
-  urlRoot: 'http://shintech.ninja:8000/api/models',
+  urlRoot: config.url + 'api/models',
 
   validation: {
     name: [
