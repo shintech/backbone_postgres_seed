@@ -3519,9 +3519,9 @@ pagurbate@^0.4.1:
   dependencies:
     standard "^10.0.2"
 
-pagurbation@^0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/pagurbation/-/pagurbation-0.1.3.tgz#81e3a8dc17c115968269a94fed63c7ec10a97543"
+pagurbation@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/pagurbation/-/pagurbation-0.1.4.tgz#02542016045282729ede8854d8699854a5dcb005"
 
 pako@~0.2.0:
   version "0.2.9"
