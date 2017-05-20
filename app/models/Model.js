@@ -1,5 +1,4 @@
 import validation from 'backbone-validation' // eslint-disable-line
-import path from 'path'
 import moment from 'moment'
 import config from '../_config'
 
