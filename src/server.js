@@ -47,8 +47,7 @@ app.use(session({
 }))
 
 require('./authentication').init(app, passport, options)
-// const pass = require('./authentication')
-// console.log(pass.init)
+
 app.use(passport.initialize())
 app.use(passport.session())
 
