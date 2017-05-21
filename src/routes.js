@@ -7,44 +7,24 @@ export default function getRouter (options) {
 // Models
 
   router.route('/models')
-    .get(function (req, res, next) {
-      models.getAllModels(req, res, next, options)
-    })
-    .post(function (req, res, next) {
-      models.createModel(req, res, next, options)
-    })
+    .get(models(options).getAllModels)
+    .post(models(options).createModel)
 
   router.route('/models/:id')
-    .get(function (req, res, next) {
-      models.getSingleModel(req, res, next, options)
-    })
-    .put(function (req, res, next) {
-      models.updateSingleModel(req, res, next, options)
-    })
-    .delete(function (req, res, next) {
-      models.removeModel(req, res, next, options)
-    })
+    .get(models(options).getSingleModel)
+    .put(models(options).updateSingleModel)
+    .delete(models(options).removeModel)
 
 // Users
 
   router.route('/users')
-    .get(function (req, res, next) {
-      users.getAllUsers(req, res, next, options)
-    })
-    .post(function (req, res, next) {
-      users.createUser(req, res, next, options)
-    })
+    .get(users(options).getAllUsers)
+    .post(users(options).createUser)
 
   router.route('/users/:id')
-    .get(function (req, res, next) {
-      users.getSingleUser(req, res, next, options)
-    })
-    .put(function (req, res, next) {
-      users.updateUser(req, res, next, options)
-    })
-    .delete(function (req, res, next) {
-      users.removeUser(req, res, next, options)
-    })
+    .get(users(options).getSingleUser)
+    .put(users(options).updateUser)
+    .delete(users(options).removeUser)
 
   return router
 }

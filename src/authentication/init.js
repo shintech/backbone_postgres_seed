@@ -1,25 +1,24 @@
-import passport from 'passport'
 import bcrypt from 'bcryptjs'
-import {init as db} from '../queries'
 import authenticationMiddleware from './middleware'
 
-const LocalStrategy = require('passport-local').Strategy
+function initPassport (app, passport, options) {
+  const {db} = options
 
-passport.serializeUser(function (user, done) {
-  done(null, user.id)
-})
-
-passport.deserializeUser(function (user, done) {
-  db.one('select * from users where id = $1', user)
-  .then(function (data) {
-    return done(null, data)
+  const LocalStrategy = require('passport-local').Strategy
+  passport.serializeUser(function (user, done) {
+    done(null, user.id)
   })
-  .catch(function (err) {
-    return done(err)
+  
+  passport.deserializeUser(function (user, done) {
+    db.one('select * from users where id = $1', user)
+    .then(function (data) {
+      return done(null, data)
+    })
+    .catch(function (err) {
+      return done(err)
+    })
   })
-})
-
-function initPassport () {
+  
   passport.use(new LocalStrategy(
     function (username, password, done) {
       db.one('select * from users where username = $1', username)
@@ -35,8 +34,9 @@ function initPassport () {
       })
     })
   )
-
+  
   passport.authenticationMiddleware = authenticationMiddleware
+  
 }
 
-module.exports = initPassport
+export default initPassport

@@ -12,6 +12,7 @@ import session from 'express-session'
 import passport from 'passport'
 import getRouter from './routes'
 import pkg from '../package.json'
+import {init} from './queries'
 
 const _parentDir = path.dirname(__dirname)
 
@@ -19,13 +20,15 @@ const RedisStore = require('connect-redis')(session)
 const store = new RedisStore({
   url: config.redisStore.url
 })
+const db = init()
 
 const options = {
   app: express(),
   port: process.env.PORT || 8000,
   environment: process.env.NODE_ENV || 'development',
   logger: winston,
-  packageName: pkg.name
+  packageName: pkg.name,
+  db: db
 }
 
 const router = getRouter(options)
@@ -43,8 +46,9 @@ app.use(session({
   saveUninitialized: false
 }))
 
-require('./authentication').init(app, passport)
-
+require('./authentication').init(app, passport, options)
+// const pass = require('./authentication')
+// console.log(pass.init)
 app.use(passport.initialize())
 app.use(passport.session())
 

@@ -1,4 +1,7 @@
-module.exports = {
-  init: require('./init'),
-  middleware: require('./middleware')
+import init from './init'
+import middleware from './middleware'
+
+export {
+  init,
+  middleware
 }
