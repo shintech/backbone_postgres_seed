@@ -4528,6 +4528,10 @@ shelljs@^0.7.5:
     interpret "^1.0.0"
     rechoir "^0.6.2"
 
+shintech-init-passport@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/shintech-init-passport/-/shintech-init-passport-0.0.3.tgz#2af086904a6ed20eaf8b636ee0c1c0f961fddcc9"
+
 signal-exit@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"

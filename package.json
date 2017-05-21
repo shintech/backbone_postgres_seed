@@ -1,6 +1,6 @@
 {
   "name": "backbone_postgres_seed",
-  "version": "1.9.16",
+  "version": "1.9.17",
   "description": "",
   "main": "build/server.js",
   "scripts": {
@@ -45,6 +45,7 @@
     "pg-promise": "^5.5.8",
     "root_view": "^0.0.3",
     "serve-favicon": "^2.4.0",
+    "shintech-init-passport": "^0.0.3",
     "winston-color": "^1.0.0"
   },
   "devDependencies": {

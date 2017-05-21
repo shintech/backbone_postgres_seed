@@ -45,7 +45,7 @@ app.use(session({
   saveUninitialized: false
 }))
 
-require('./authentication').init(app, passport, options)
+require('shintech-init-passport').init(app, passport, options)
 
 app.use(passport.initialize())
 app.use(passport.session())
