@@ -4528,6 +4528,10 @@ shelljs@^0.7.5:
     interpret "^1.0.0"
     rechoir "^0.6.2"
 
+shintech-init-db@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/shintech-init-db/-/shintech-init-db-0.0.2.tgz#1e26152613f989dd76e178532f8734d7e8063a7b"
+
 shintech-init-passport@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/shintech-init-passport/-/shintech-init-passport-0.0.3.tgz#2af086904a6ed20eaf8b636ee0c1c0f961fddcc9"
