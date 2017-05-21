@@ -1,5 +1,5 @@
 import express from 'express'
-import {models, users} from './db'
+import {models, users} from './queries'
 
 export default function getRouter (options) {
   const router = express.Router()

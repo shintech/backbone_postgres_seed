@@ -1,6 +1,6 @@
 import passport from 'passport'
 import bcrypt from 'bcryptjs'
-import {init as db} from '../db'
+import {init as db} from '../queries'
 import authenticationMiddleware from './middleware'
 
 const LocalStrategy = require('passport-local').Strategy
