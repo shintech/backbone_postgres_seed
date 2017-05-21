@@ -1,10 +1,12 @@
 import chai from 'chai'
 import chaiHttp from 'chai-http'
-import server from '../server'
-import {init as db} from '../queries'
+import serverConfig from '../server'
+import bcrypt from 'bcryptjs'
 
 chai.use(chaiHttp)
 
+const server = serverConfig.server
+const db = serverConfig.options.db
 const expect = chai.expect
 const request = chai.request(server)
 
@@ -109,8 +111,13 @@ function getAllTest (model, url, properties, object, extProperties, expectedResp
       expect(resp[0]).to.have.property('id')
 
       for (var i = 0; i < properties.length; i++) {
-        expect(resp[0]).to.have.property(properties[i])
-        expect(resp[0][properties[i]]).to.equal(object[properties[i]])
+        expect(resp[0]).to.have.property(properties[i])        
+        
+        if (properties[i] === 'password') {
+          expect(bcrypt.compareSync(object[properties[i]], resp[0][properties[i]])).to.equal(true)
+        } else {
+          expect(resp[0][properties[i]]).to.equal(object[properties[i]])
+        }
       }
 
       if (extProperties) {
@@ -174,7 +181,11 @@ function getSingleTest (model, url, postUrl, properties, object, extProperties, 
 
         for (var i = 0; i < properties.length; i++) {
           expect(res.body).to.have.property(properties[i])
-          expect(res.body[properties[i]]).to.equal(object[properties[i]])
+          if (properties[i] === 'password') {
+            expect(bcrypt.compareSync(object[properties[i]], res.body[properties[i]])).to.equal(true)
+          } else {
+            expect(res.body[properties[i]]).to.equal(object[properties[i]])
+          }
         }
 
         if (extProperties) {

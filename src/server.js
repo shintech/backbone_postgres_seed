@@ -20,7 +20,6 @@ const RedisStore = require('connect-redis')(session)
 const store = new RedisStore({
   url: config.redisStore.url
 })
-const db = init()
 
 const options = {
   app: express(),
@@ -28,7 +27,7 @@ const options = {
   environment: process.env.NODE_ENV || 'development',
   logger: winston,
   packageName: pkg.name,
-  db: db
+  db: init()
 }
 
 const router = getRouter(options)
@@ -75,4 +74,9 @@ server.listen(port, () => {
   }
 })
 
-export default server
+const serverConfig = {
+  server: server,
+  options: options
+}
+
+export default serverConfig
