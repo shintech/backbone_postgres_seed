@@ -2,11 +2,10 @@ import 'babel-polyfill'
 import config from './_config'
 import express from 'express'
 import bodyParser from 'body-parser'
-import {Server} from 'http'
+import httpervert from 'httpervert'
 import path from 'path'
 import morgan from 'morgan'
 import winston from 'winston-color'
-import chalk from 'chalk'
 import favicon from 'serve-favicon'
 import session from 'express-session'
 import passport from 'passport'
@@ -33,8 +32,8 @@ const options = {
 options.db = init(options)
 
 const router = getRouter(options)
-const { app, environment, port, logger, packageName } = options
-const server = Server(app)
+const { app, environment } = options
+const server = httpervert(options)
 
 if (environment !== 'test') {
   app.use(morgan('dev'))
@@ -69,12 +68,6 @@ app.post('/login', passport.authenticate('local', {
 }))
 
 app.use('/api', router)
-
-server.listen(port, () => {
-  if (environment !== 'test') {
-    logger.info(`${chalk.bgBlack.cyan(packageName)} listening on port ${port}...`)
-  }
-})
 
 const serverConfig = {
   server: server,
