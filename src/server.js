@@ -3,6 +3,8 @@ import config from './_config'
 import express from 'express'
 import bodyParser from 'body-parser'
 import httpervert from 'httpervert'
+import init from 'shintech-init-db'
+import helmet from 'helmet'
 import path from 'path'
 import morgan from 'morgan'
 import winston from 'winston-color'
@@ -11,14 +13,8 @@ import session from 'express-session'
 import passport from 'passport'
 import getRouter from './routes'
 import pkg from '../package.json'
-import {init} from './queries'
 
 const _parentDir = path.dirname(__dirname)
-
-const RedisStore = require('connect-redis')(session)
-const store = new RedisStore({
-  url: config.redisStore.url
-})
 
 const options = {
   app: express(),
@@ -31,13 +27,17 @@ const options = {
 
 options.db = init(options)
 
-const router = getRouter(options)
 const { app, environment } = options
-const server = httpervert(options)
 
-if (environment !== 'test') {
-  app.use(morgan('dev'))
-}
+app.use(helmet())
+
+const server = httpervert(options)
+const router = getRouter(options)
+
+const RedisStore = require('connect-redis')(session)
+const store = new RedisStore({
+  url: config.redisStore.url
+})
 
 app.use(session({
   store: store,
@@ -66,6 +66,10 @@ app.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/loginFailure'
 }))
+
+if (environment !== 'test') {
+  app.use(morgan('dev'))
+}
 
 app.use('/api', router)
 
