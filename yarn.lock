@@ -3626,9 +3626,9 @@ packet-reader@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/packet-reader/-/packet-reader-0.2.0.tgz#819df4d010b82d5ea5671f8a1a3acf039bcd7700"
 
-pagurbate@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/pagurbate/-/pagurbate-0.5.0.tgz#230a496fde673694233f78a0daf8976fb772d937"
+pagurbate@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/pagurbate/-/pagurbate-0.5.1.tgz#a58acd98821d352b4e34cad7378e721f9cce92c6"
   dependencies:
     standard "^10.0.2"
 
