@@ -8,7 +8,7 @@
 
 
 table {
-  border: 1px solid lightgrey;
+  border: 1px solid black;
 }
 
 .table-header {
@@ -20,6 +20,16 @@ th, td {
   text-align: center;
 }
 
-#main {
-  display: none;
+body {
+  background-color: lighten(lightgrey, 10%);
+}
+
+.panel-footer {
+  border: 1px solid black;
+}
+
+.pagurbate {
+    width: 50%;
+    margin: 0 auto;
+  
 }
