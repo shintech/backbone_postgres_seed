@@ -27,7 +27,7 @@ const options = {
 
 options.db = init(options)
 
-const { app, environment, logger } = options
+const { app, environment } = options
 
 app.use(helmet())
 
@@ -77,10 +77,5 @@ const serverConfig = {
   server: server,
   options: options
 }
-
-process.on('SIGINT', function () {
-  logger.info('Goodbye! Thanks for coming...')
-  process.exit()
-})
 
 export default serverConfig
