@@ -9,6 +9,8 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body'
 })
 
+const environment = process.env.NODE_ENV || 'development'
+
 const paths = {
   ENTRY: path.join(__dirname, 'app', 'main.js'),
   OUTPUT_FILENAME: 'bundle.js',
@@ -16,7 +18,7 @@ const paths = {
   APP: path.join(__dirname, 'app')
 }
 
-module.exports = {
+const config = {
   entry: [
     paths.ENTRY
   ],
@@ -65,7 +67,12 @@ module.exports = {
           babelrc: true
         }
       }
-    }),
+    })
+  ]
+}
+
+if (environment === 'production') {
+  config.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false },
       mangle: true,
@@ -73,5 +80,7 @@ module.exports = {
       beautify: false,
       dead_code: true
     })
-  ]
+  )
 }
+
+module.exports = config
