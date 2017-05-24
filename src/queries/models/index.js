@@ -9,7 +9,7 @@ export default function getAllRoutes (options) {
     db.any('select * from models')
     .then(function (data) {
       res.status(200)
-      .json(pagurbation(req, data, 5))
+      .json(pagurbation(req, data, 10))
     })
     .catch(function (err) {
       return next(err)
