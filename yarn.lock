@@ -774,15 +774,15 @@ backbone_form_view@^0.0.1:
   dependencies:
     standard "^10.0.2"
 
-backbone_modal_view@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/backbone_modal_view/-/backbone_modal_view-0.0.2.tgz#d0339e12c8ee933aec0d7f6e52c24b964c1e0246"
+backbone_modal_view@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/backbone_modal_view/-/backbone_modal_view-0.0.3.tgz#d985f7b1819d2b64613f5fa82ab957555b47b27d"
   dependencies:
     standard "^10.0.2"
 
-backbone_table_view@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/backbone_table_view/-/backbone_table_view-0.0.5.tgz#a8a80051544bf30a630c651e025b9ac7f263cc09"
+backbone_table_view@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/backbone_table_view/-/backbone_table_view-0.0.6.tgz#e0c519e039af2ae33914fc2a27994c950993485c"
   dependencies:
     standard "^10.0.2"
 

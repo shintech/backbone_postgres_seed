@@ -1,6 +1,6 @@
 {
   "name": "backbone_postgres_seed",
-  "version": "1.10.9",
+  "version": "1.10.10",
   "description": "",
   "main": "build/server.js",
   "scripts": {
@@ -25,8 +25,8 @@
     "backbone.marionette": "^3.3.0",
     "backbone_app": "^0.0.3",
     "backbone_form_view": "^0.0.1",
-    "backbone_modal_view": "^0.0.2",
-    "backbone_table_view": "^0.0.5",
+    "backbone_modal_view": "^0.0.3",
+    "backbone_table_view": "^0.0.6",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.4.7",
     "body-parser": "^1.16.1",
