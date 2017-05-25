@@ -6,6 +6,9 @@ WORKDIR /shintech
 
 COPY . .
 
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
 RUN echo "Starting..." && \
   npm install -g webpack && \
   rm -rv node_modules build --force && \
