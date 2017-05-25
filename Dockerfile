@@ -6,9 +6,6 @@ WORKDIR /shintech
 
 COPY . .
 
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-
 RUN echo "Starting..." && \
   npm install -g webpack && \
   rm -rv node_modules build --force && \
@@ -23,7 +20,7 @@ RUN printf "Installing dependencies...\n" &&\
   yarn install && \
 
   printf "Building in progress...\nPlease wait...\n" && \
-  webpack && \
+  webpack --progress --display-reasons --display-modules --display-chunks && \
   npm run build 
 
 RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 && \

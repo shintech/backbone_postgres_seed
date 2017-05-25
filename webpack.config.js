@@ -9,7 +9,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body'
 })
 
-const environment = process.env.NODE_ENV || 'development'
+const environment = process.env.NODE_ENV || 'production'
 
 const paths = {
   ENTRY: path.join(__dirname, 'app', 'main.js'),
