@@ -13,4 +13,9 @@ config.redisStore = {
 
 config.domainName = 'shintech.ninja'
 
+config.sslPath = {
+  development: process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'],
+  production: process.env.SSL_PATH
+}
+
 export default config
