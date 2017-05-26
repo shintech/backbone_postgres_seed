@@ -1,5 +1,5 @@
 const config = {}
 
-config.url = 'http://shintech.ninja:8000/'
+config.url = 'https://shintech.ninja:8000/'
 
 export default config

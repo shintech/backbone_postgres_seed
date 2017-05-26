@@ -11,4 +11,6 @@ config.redisStore = {
   secret: process.env.REDIS_STORE_SECRET
 }
 
+config.domainName = 'shintech.ninja'
+
 export default config
