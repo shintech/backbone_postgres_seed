@@ -13,7 +13,7 @@ Backbone + Postgres + Express + Node 6
 #### Development
     
     npm run watch
-    webpack --watch
+    npm run webpack
     npm run dev
     
 #### Production
@@ -24,6 +24,7 @@ Backbone + Postgres + Express + Node 6
     cd bbps_deploy
     docker-compose pull
     docker-compose up -d
+
     
 ### Notes 
 
