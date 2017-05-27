@@ -12,11 +12,11 @@ config.redisStore = {
   secret: process.env.REDIS_STORE_SECRET
 }
 
-config.domainName = 'shintech.ninja'
-
-config.sslPath = {
-  development: path.join(process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'], '/letsencrypt/live/'),
-  production: process.env.SSL_PATH
+config.domainName = {
+  development: 'dev.shintech.ninja',
+  production: 'shintech.ninja'
 }
+
+config.sslPath = path.join(process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'], '/letsencrypt/live/')
 
 export default config
