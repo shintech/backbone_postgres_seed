@@ -5,7 +5,7 @@ config.development = {
 }
 
 config.production = {
-  url: 'https://shintech.ninja:8000/'
+  url: 'https://shintech.ninja:443/'
 }
 
 export default config

@@ -3,8 +3,11 @@ import moment from 'moment'
 import config from '../_config'
 
 const Model = Backbone.Model.extend({
-  urlRoot: config.url + 'api/models',
-
+  initialize: function (options) {
+    if (this.get('url')) {
+      this.urlRoot = this.get('url') + "api/models"
+    }
+  },
   validation: {
     name: [
       {
