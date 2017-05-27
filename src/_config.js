@@ -1,3 +1,4 @@
+import path from 'path'
 const config = {}
 
 config.postgresURI = {
@@ -14,7 +15,7 @@ config.redisStore = {
 config.domainName = 'shintech.ninja'
 
 config.sslPath = {
-  development: process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'],
+  development: path.join(process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'], '/letsencrypt/live/'),
   production: process.env.SSL_PATH
 }
 
