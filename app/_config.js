@@ -1,7 +1,7 @@
 const config = {}
 
 config.development = {
-  url: 'https://dev.shintech.ninja:443/'
+  url: 'http://dev.shintech.ninja:8000/'
 }
 
 config.production = {
