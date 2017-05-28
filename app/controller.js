@@ -2,7 +2,7 @@ import Marionette from 'marionette'
 import Model from './models/Model'
 import Models from './collections/Models'
 import TableView from 'backbone_table_view'
-import FormView from './backbone_form_view'
+import FormView from 'backbone_form_view'
 import LoginView from './views/LoginView'
 import Config from 'shintech-config'
 import config from './_config'
@@ -44,11 +44,11 @@ const Controller = Marionette.Object.extend({
 
   formRoute: function () {
     const model = new Model({url: this.config.getConfig('url')})
-    
+
     const formView = new FormView({
       formTemplate: require('./templates/form-view-template.html'),
       model: model
-      
+
     })
 
     this.app.view.showChildView('main', formView)

@@ -1,13 +1,13 @@
 import validation from 'backbone-validation' // eslint-disable-line
 import moment from 'moment'
-import config from '../_config'
 
 const Model = Backbone.Model.extend({
   initialize: function (options) {
     if (this.get('url')) {
-      this.urlRoot = this.get('url') + "api/models"
+      this.urlRoot = this.get('url') + 'api/models'
     }
   },
+
   validation: {
     name: [
       {
