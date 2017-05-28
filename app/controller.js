@@ -4,7 +4,7 @@ import Models from './collections/Models'
 import TableView from 'backbone_table_view'
 import FormView from './backbone_form_view'
 import LoginView from './views/LoginView'
-import Config from './shintech-config'
+import Config from 'shintech-config'
 import config from './_config'
 
 const Controller = Marionette.Object.extend({
