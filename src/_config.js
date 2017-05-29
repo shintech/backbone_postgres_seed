@@ -1,4 +1,3 @@
-import path from 'path'
 const config = {}
 
 config.postgresURI = {
@@ -17,6 +16,6 @@ config.domainName = {
   production: 'shintech.ninja'
 }
 
-config.sslPath = path.join(process.env[(process.platform === 'win32') ? 'USERPROFILE' : '/etc'], '/letsencrypt/live/')
+config.sslPath = '/etc/letsencrypt/live/'
 
 export default config
