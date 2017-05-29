@@ -17,6 +17,6 @@ config.domainName = {
   production: 'shintech.ninja'
 }
 
-config.sslPath = path.join(process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'], '/letsencrypt/live/')
+config.sslPath = path.join(process.env[(process.platform === 'win32') ? 'USERPROFILE' : '/etc'], '/letsencrypt/live/')
 
 export default config

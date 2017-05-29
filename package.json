@@ -1,6 +1,6 @@
 {
   "name": "backbone_postgres_seed",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "",
   "main": "build/server.js",
   "scripts": {
