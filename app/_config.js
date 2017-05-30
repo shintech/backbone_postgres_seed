@@ -1,11 +1,11 @@
 const config = {}
 
 config.development = {
-  url: 'http://dev.shintech.ninja:8000/'
+  url: 'https://' + (window.location.hostname) + '/'
 }
 
 config.production = {
-  url: 'https://shintech.ninja:443/'
+  url: 'https://' + (window.location.hostname) + '/'
 }
 
 export default config

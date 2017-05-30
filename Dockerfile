@@ -6,9 +6,7 @@ WORKDIR /shintech
 
 COPY . .
 
-RUN useradd --user-group --create-home --shell /bin/bash shintech && \
-  chown -R shintech:shintech /shintech && \
-  rm -rv node_modules build --force && \
+RUN rm -rv node_modules build --force && \
   npm install -g webpack && \
   printf "Creating file directories...\n" && \
   mkdir build && \

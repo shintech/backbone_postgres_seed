@@ -17,7 +17,7 @@ export default function getAllRoutes (options) {
   }
 
   queries.createModel = (req, res, next) => {
-    db.none('insert into models( name, attribute )' + 'values( ${name}, ${attribute} )', req.body) // eslint-disable-line
+    db.none('insert into models( name, attribute )' + 'values( $1, $2 )', [req.body.name, req.body.attribute]) // eslint-disable-line
     .then(function () {
       res.status(200)
       .json({
