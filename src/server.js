@@ -22,6 +22,7 @@ const options = {
   environment: process.env.NODE_ENV || 'development',
   logger: winston,
   packageName: pkg.name,
+  packageVersion: pkg.version,
   config: config
 }
 
