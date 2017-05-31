@@ -780,9 +780,9 @@ backbone_modal_view@^0.0.3:
   dependencies:
     standard "^10.0.2"
 
-backbone_table_view@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/backbone_table_view/-/backbone_table_view-0.1.0.tgz#8e2a692bf62a7828f1840b984e2d64196f548da3"
+backbone_table_view@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/backbone_table_view/-/backbone_table_view-0.1.1.tgz#1e78a7dbc1220c17c413f33b222c99d42c36914a"
   dependencies:
     standard "^10.0.2"
 
@@ -2565,9 +2565,9 @@ http-signature@~1.1.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-httpervert@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/httpervert/-/httpervert-2.2.1.tgz#b3655af0a656f74d50cf2c59474dbc908aa4b9a8"
+httpervert@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/httpervert/-/httpervert-2.2.2.tgz#7a8247905d27668cae6d0fb954c0ebb2a4bd3dda"
 
 https-browserify@0.0.1:
   version "0.0.1"

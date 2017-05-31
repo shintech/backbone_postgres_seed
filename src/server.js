@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import config from './_config'
 import express from 'express'
 import bodyParser from 'body-parser'
