@@ -7,6 +7,8 @@ import LoginView from './views/LoginView'
 import Config from 'shintech-config'
 import config from './_config'
 
+const tableView = new TableView()
+
 const Controller = Marionette.Object.extend({
   initialize: function (options) {
     this.app = options.app
@@ -26,14 +28,14 @@ const Controller = Marionette.Object.extend({
 
     models.fetch({
       success: function (data) {
-        app.view.showChildView('main', new TableView({
-          collection: models,
-          pageData: data.pageData,
-          panelHeading: 'Panel Heading',
-          template: require('./templates/table-view-template.html'),
-          tableItemTemplate: require('./templates/model-view-template.html'),
-          modalViewTemplate: require('./templates/model-modal-view-template.html')
-        }))
+        tableView.collection = models
+        tableView.pageData = data.pageData
+        tableView.panelHeading = 'Panel Heading'
+        tableView.template = require('./templates/table-view-template.html')
+        tableView.tableItemTemplate = require('./templates/model-view-template.html')
+        tableView.modalViewTemplate = require('./templates/model-modal-view-template.html')
+        tableView.render()
+        app.view.showChildView('main', tableView)
       },
 
       error: function (err) {

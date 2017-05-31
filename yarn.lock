@@ -780,9 +780,9 @@ backbone_modal_view@^0.0.3:
   dependencies:
     standard "^10.0.2"
 
-backbone_table_view@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/backbone_table_view/-/backbone_table_view-0.0.6.tgz#e0c519e039af2ae33914fc2a27994c950993485c"
+backbone_table_view@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/backbone_table_view/-/backbone_table_view-0.1.0.tgz#8e2a692bf62a7828f1840b984e2d64196f548da3"
   dependencies:
     standard "^10.0.2"
 
