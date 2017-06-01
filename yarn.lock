@@ -4645,9 +4645,9 @@ shelljs@^0.7.5:
     interpret "^1.0.0"
     rechoir "^0.6.2"
 
-shintech-config@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/shintech-config/-/shintech-config-0.1.1.tgz#bc94cee13cb55b6b0082bf94ffd8d9493086f26c"
+shintech-config@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/shintech-config/-/shintech-config-0.1.2.tgz#1232fb783e37a6367b12cfebb75342f05e05f1b6"
 
 shintech-init-db@^0.0.2:
   version "0.0.2"
