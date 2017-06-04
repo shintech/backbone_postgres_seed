@@ -11,7 +11,6 @@ import favicon from 'serve-favicon'
 import session from 'express-session'
 import passport from 'passport'
 import getRouter from './routes'
-import pkg from '../package.json'
 
 const _parentDir = path.dirname(__dirname)
 
@@ -20,8 +19,6 @@ const options = {
   port: process.env.PORT || 8000,
   environment: process.env.NODE_ENV || 'development',
   logger: winston,
-  packageName: pkg.name,
-  packageVersion: pkg.version,
   config: config
 }
 
