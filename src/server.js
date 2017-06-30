@@ -12,7 +12,7 @@ import session from 'express-session'
 import passport from 'passport'
 import getRouter from './routes'
 
-const _parentDir = path.dirname(__dirname)
+const _bootstrapDir = require.resolve('bootstrap').match(/.*\/node_modules\/[^/]+\//)[0]
 
 const options = {
   app: express(),
@@ -52,7 +52,7 @@ app.use(favicon(path.join(__dirname, 'resources', 'images', 'favicon.png')))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-app.use('/css', express.static(path.join(_parentDir, 'node_modules', 'bootstrap', 'dist', 'css')))
+app.use('/css', express.static(path.join(_bootstrapDir, 'dist', 'css')))
 app.use(express.static(path.join(__dirname, 'static')))
 
 app.get('/loginFailure', function (req, res, next) {
