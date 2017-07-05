@@ -12,6 +12,7 @@ import session from 'express-session'
 import passport from 'passport'
 import getRouter from './routes'
 
+const _parentDir = require(path.join(path.dirname(__dirname), 'package.json'))
 const _bootstrapDir = require.resolve('bootstrap').match(/.*\/node_modules\/[^/]+\//)[0]
 
 const options = {
@@ -19,7 +20,8 @@ const options = {
   port: process.env.PORT || 8000,
   environment: process.env.NODE_ENV || 'development',
   logger: winston,
-  config: config
+  config: config,
+  packageDir: _parentDir
 }
 
 options.db = init(options)
