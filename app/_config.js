@@ -1,7 +1,7 @@
 const config = {}
 
 config.development = {
-  url: 'https://dev.' + (window.location.hostname) + '/'
+  url: 'https://' + (window.location.hostname) + '/'
 }
 
 config.production = {
