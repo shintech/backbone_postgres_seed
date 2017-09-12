@@ -2565,9 +2565,9 @@ http-signature@~1.1.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-httpervert@^3.7.0:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/httpervert/-/httpervert-3.7.0.tgz#d5641c58cb747d4c089af5d56f84de9713d03c78"
+httpervert@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/httpervert/-/httpervert-3.7.1.tgz#eab39bf352acea44a232a1ec69a0b441b6b5a3a6"
 
 https-browserify@0.0.1:
   version "0.0.1"
@@ -4653,9 +4653,9 @@ shintech-info@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/shintech-info/-/shintech-info-0.0.3.tgz#a00cf4704c07668b1355951dcce70e4f5aa316a2"
 
-shintech-init-db@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/shintech-init-db/-/shintech-init-db-0.0.2.tgz#1e26152613f989dd76e178532f8734d7e8063a7b"
+shintech-init-db@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/shintech-init-db/-/shintech-init-db-0.0.4.tgz#d1987407a2357783fe4a60b15ca7d69c3923906b"
 
 shintech-init-passport@^0.0.3:
   version "0.0.3"

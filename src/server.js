@@ -17,16 +17,17 @@ const _bootstrapDir = require.resolve('bootstrap').match(/.*\/node_modules\/[^/]
 
 const options = {
   port: process.env.PORT || 8000,
+  tcp: process.env['TCP'] || 8001,
   environment: process.env.NODE_ENV || 'development',
   logger: winston,
   config: config,
   pkg: _pkg
 }
 
-const { port, environment } = options
+const { port, tcp, environment } = options
 
 var httpervert = new HTTPervert(options)
-const { app, server, router } = httpervert
+const { app, server, router, net } = httpervert
 
 options.db = init(options)
 options.router = router
@@ -77,5 +78,6 @@ const serverConfig = {
 }
 
 server.listen(port)
+net.listen(tcp)
 
 export default serverConfig
