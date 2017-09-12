@@ -1,8 +1,7 @@
-import express from 'express'
 import {models, users} from './queries'
 
 export default function getRouter (options) {
-  const router = express.Router()
+  const router = options.router
 
 // Models
 
