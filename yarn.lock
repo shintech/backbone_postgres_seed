@@ -2565,9 +2565,9 @@ http-signature@~1.1.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-httpervert@^3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/httpervert/-/httpervert-3.6.1.tgz#ebc663c98099b8c014a22826347cc6d45de3fa22"
+httpervert@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/httpervert/-/httpervert-3.7.0.tgz#d5641c58cb747d4c089af5d56f84de9713d03c78"
 
 https-browserify@0.0.1:
   version "0.0.1"
